@@ -1,27 +1,75 @@
 .header{
   position: fixed;
-  padding: 10px;
   border: 1px solid #D8D8D8;
   background: #222;
-  height: 50px;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1999;
   margin: auto;
   width: auto;
-  &_logo{
+  &__logo{
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    }
     text-align: center;
     display: block;
     width: 104px;
     margin: 0 auto;
     opacity:  .9;
+    font-size: 40px;
   }
-  &_bar{
+  &__bar{
+    height: 50px;
+    width: 270px;
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
     box-sizing: border-box;
+  }
+}
+
+.user_nav{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  span{
+    top: 5px;
+    display: block;
+    float: left;
+    margin-left: 30px;
+    width: 150px;
+    height: 50px;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+  }
+  ul {
+    position: absolute;
+    top: 46px;
+    right: 0;
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    }
+}
+
+.post{
+
+  padding: 8px 20px;
+  font-size: 11px;
+  border: 2px solid #eeee;
+  color: #eeee;
+  font-weight: hold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.footer{
+  background-color: #ffffff;
+  p{
+    color: #D8D8D8;
   }
 }

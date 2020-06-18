@@ -1,0 +1,4 @@
+= label :image, class: 'form-contents__box--image' do
+  = form.file_field :image, class: 'form-contents__box--file', placeholder: "画像" 
+= form.text_area :text, placeholder: "文章" , rows: "10"
+= form.submit "SEND"
