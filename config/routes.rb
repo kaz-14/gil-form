@@ -7,5 +7,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :users, only: :show
+  resources :users, only: [:edit, :update, :show]
+  resources :groups, only: [:new, :create, :edit, :update]
 end
