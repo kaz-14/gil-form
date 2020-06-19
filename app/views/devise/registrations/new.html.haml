@@ -13,6 +13,9 @@
         %br/
         = f.email_field :email
       .field
+        = f.label :user_image
+        = f.file_field :image
+      .field
         = f.label :password
         - if @validatable
           %em

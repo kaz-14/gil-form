@@ -1,16 +1,14 @@
 .content_post
-  .content_image{:style => "background-image: url(#{tweet.image});"}
-    .more
-      %ul.more_list
-        %li
-          = link_to '詳細', tweet_path(tweet.id), method: :get
-        - if user_signed_in? && current_user.id == tweet.user_id
-          %li
-            = link_to '編集', edit_tweet_path(tweet.id), method: :get
-          %li
-            = link_to '削除', tweet_path(tweet.id), method: :delete
+  - if tweet.image?
+    .content_image
+      = link_to tweet_path(tweet.id) do
+        = image_tag tweet.image.url, :size => '100x100', class: 'image__box'
+  - else
+    .content_image
+      = link_to tweet_path(tweet.id) do
+        = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
   .content_title
-    %p= tweet.title
+    = tweet.title
     .content___user--name
       %a{:href => "/users/#{tweet.user.id}"}
         = tweet.user.nickname

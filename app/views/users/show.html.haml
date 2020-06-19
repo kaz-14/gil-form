@@ -1,6 +1,7 @@
-.contents.row
-  %p
+.content__mypage
+  .content__mypage__name
     = @nickname
     さんの投稿一覧
-  - @tweets.each do |tweet|
-    = render partial: "tweets/tweet", locals: { tweet: tweet }
+  .content__mypage__list
+    - @tweets.each do |tweet|
+      = render partial: "tweets/tweet", locals: { tweet: tweet }

@@ -21,6 +21,7 @@
     font-size: 40px;
   }
   &__bar{
+    display: flex;
     height: 50px;
     width: 270px;
     position: absolute;
@@ -28,6 +29,9 @@
     top: 0;
     bottom: 0;
     box-sizing: border-box;
+    &__user_image{
+      padding: 15px 0 0 15px;
+    }
   }
 }
 
@@ -50,8 +54,8 @@
     top: 15px;
     display: block;
     float: left;
-    margin-left: 30px;
-    width: 100px;
+    margin-left: 15px;
+    width: 70px;
     height: 50px;
     font-size: 15px;
     cursor: pointer;
@@ -79,6 +83,8 @@
 }
 
 .post{
+  margin-left: 15px;
+  margin-top: 10px;
   padding: 8px 20px;
   font-size: 11px;
   border: 2px solid #eeee;
@@ -90,6 +96,7 @@
 }
 
 .footer{
+  text-align: center;
   background-color: #ffffff;
   p{
     color: #D8D8D8;
