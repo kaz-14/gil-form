@@ -1,33 +1,35 @@
 .contents.row
-  .content_post{:style => "background-image: url(#{@tweet.image});"}
-    - if user_signed_in? && current_user.id == @tweet.user_id
-      .more
-        %span= image_tag 'arrow_top.png'
-        %ul.more_list
-          %li
-            = link_to '編集', edit_tweet_path(@tweet.id), method: :get
-          %li
-            = link_to '削除', tweet_path(@tweet.id), method: :delete
-    %p= @tweet.text
-    %span.name
-      %a{:href => "/users/#{@tweet.user.id}"}
-        %span 投稿者
-        = @tweet.user.nickname
-  .container
-    - if current_user
-      = form_with(model: [@tweet, @comment], local: true) do |form|
-        = form.text_area :text, placeholder: "コメントする", rows: "2"
-        = form.submit "SEND"
-    - else
-      %strong
-        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-    .comments
-      %h4 ＜コメント一覧＞
-      - if @comments
-        - @comments.each do |comment|
-          %p
-            %strong
-              = link_to comment.user.nickname, "/users/#{comment.user_id}"
-              ：
-            = comment.text
+  .content_post
+    .content_image{:style => "background-image: url(#{@tweet.image});"}
+      - if user_signed_in? && current_user.id == @tweet.user_id
+        .more
+          %ul.more_list
+            %li
+              = link_to '編集', edit_tweet_path(@tweet.id), method: :get
+            %li
+              = link_to '削除', tweet_path(@tweet.id), method: :delete
+    .content_title
+      %p= @tweet.title
+      .content_text
+        %p= @tweet.text
+        .content_user__name
+          %a{:href => "/users/#{@tweet.user.id}"}
+            = @tweet.user.nickname
+    .container
+      - if current_user
+        = form_with(model: [@tweet, @comment], local: true) do |form|
+          = form.text_area :text, placeholder: "コメントする", rows: "2"
+          = form.submit "SEND"
+      - else
+        %strong
+          %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+      .comments
+        %h4 ＜コメント一覧＞
+        - if @comments
+          - @comments.each do |comment|
+            %p
+              %strong
+                = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                ：
+              = comment.text
 

@@ -9,8 +9,8 @@
             = link_to '編集', edit_tweet_path(tweet.id), method: :get
           %li
             = link_to '削除', tweet_path(tweet.id), method: :delete
-  .content_text
-    %p= tweet.text
-    .content_text__name
+  .content_title
+    %p= tweet.title
+    .content___user--name
       %a{:href => "/users/#{tweet.user.id}"}
         = tweet.user.nickname

@@ -32,31 +32,53 @@
 }
 
 .user_nav{
+  position: relative;
+  height: 100px;
+  right: 0;
   display: flex;
   align-items: center;
   height: 100%;
   span{
-    top: 5px;
+    display: block;
+    color: #ccd4de;
+    font-size: 11px;
+    margin-top: 0;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #eeee;
+    top: 15px;
     display: block;
     float: left;
     margin-left: 30px;
-    width: 150px;
+    width: 100px;
     height: 50px;
-    font-size: 1em;
+    font-size: 15px;
     cursor: pointer;
     position: relative;
   }
+  span:after{
+    content: '▼';
+    font-size: .7em;
+    margin: 15px 3px 0 10px;
+  }
+  span:hover ul{
+    display: block;
+  }
   ul {
+    color: #eeeeee;
+    font-size: 15px;
+    background-color: #f0f0f0;
+    display: none;
     position: absolute;
     top: 46px;
     right: 0;
-    border-left: 1px solid #d8d8d8;
-    border-right: 1px solid #d8d8d8;
-    }
+    padding: 15px 20px;
+    border-bottom: 1px solid #d8d8d8;
+  }
 }
 
 .post{
-
   padding: 8px 20px;
   font-size: 11px;
   border: 2px solid #eeee;
