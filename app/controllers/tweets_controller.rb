@@ -12,10 +12,12 @@ class TweetsController < ApplicationController
 
   def create
     Tweet.create(tweet_params)
+    redirect_to root_path
   end
 
   def destroy
     @tweet.destroy
+    redirect_to root_path
   end
 
   def edit

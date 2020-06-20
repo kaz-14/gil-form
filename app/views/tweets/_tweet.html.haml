@@ -12,3 +12,14 @@
     .content___user--name
       %a{:href => "/users/#{tweet.user.id}"}
         = tweet.user.nickname
+    %td= tweet.title
+    - if current_user.favorited_by?(tweet.id)
+      %td
+      = link_to 'いいね外す', destroy_favorite_path(tweet), method: :DELETE
+      = tweet.favorites.count
+    - else
+      %td
+      = link_to 'いいねする', create_favorite_path(tweet), method: :POST
+      = tweet.favorites.count
+    .content__follow
+      = #render partial: "relationships/follow_button", locals: { user: @user }

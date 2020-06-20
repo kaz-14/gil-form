@@ -10,7 +10,7 @@
 %body
   .header
     .header__logo
-      %h1.grid-6
+      .grid-6
         %a{:href => "/"} GIL
     .header__bar
       - if user_signed_in?
@@ -40,6 +40,5 @@
           = link_to "新規登録", new_user_registration_path, class: 'post'
     = yield
     .footer
-      %p
-        Growth Is Life 2020.
+      Growth Is Life 2020.
 

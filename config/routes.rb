@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:edit, :update, :show]
   resources :groups, only: [:new, :create, :edit, :update]
+  resources :relationships, only: [:create, :destroy]
+  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
+  delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
 end
