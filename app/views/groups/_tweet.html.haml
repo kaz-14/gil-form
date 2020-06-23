@@ -1,4 +1,5 @@
-.content_post
+- if tweet.group_id?
+  .content_post
   - if tweet.image?
     .content_image
       = link_to tweet_path(tweet.id) do
@@ -11,17 +12,17 @@
     .content__title
       .content__text
       = tweet.title
-      -# .content__favorite
-      -# - if current_user.favorited_by?(tweet.id)
-      -#   %td
-      -#   = link_to destroy_favorite_path(tweet), method: :DELETE do
-      -#     = icon('fas', 'heart')
-      -#   = tweet.favorites.count
-      -# - else
-      -#   %td
-      -#   = link_to create_favorite_path(tweet), method: :POST do
-      -#     = icon('far', 'heart')
-      -#   = tweet.favorites.count
+      .content__favorite
+      - if current_user.favorited_by?(tweet.id)
+        %td
+        = link_to destroy_favorite_path(tweet), method: :DELETE do
+          = icon('fas', 'heart')
+        = tweet.favorites.count
+      - else
+        %td
+        = link_to create_favorite_path(tweet), method: :POST do
+          = icon('far', 'heart')
+        = tweet.favorites.count
     .content__user--name
       %a{:href => "/users/#{tweet.user.id}"}
         = tweet.user.nickname

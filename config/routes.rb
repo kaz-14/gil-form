@@ -7,9 +7,11 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :users, only: [:edit, :update, :show]
-  resources :groups, only: [:new, :create, :edit, :update]
-  resources :relationships, only: [:create, :destroy]
+  resources :users, only: [:index, :edit, :update, :show]
+  resources :groups, only: [:index, :new, :create, :edit, :update, :show]
+  # resources :relationships, only: [:create, :destroy]
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
 end

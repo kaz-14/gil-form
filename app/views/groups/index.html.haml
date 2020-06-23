@@ -1,0 +1,14 @@
+%h1 グループ一覧
+- if user_signed_in?
+  %h2
+    Come on #{current_user.nickname}
+  .Group__list
+    .more_list
+    - current_user.groups.each do |group|
+      .Group
+        = link_to groups_path(@groups) do
+          .Group__name
+            = group.name
+        -# %p
+        -#   %a{:href => "/groups/#{g.id}"}
+        -#     = g.name

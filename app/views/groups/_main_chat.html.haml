@@ -1,0 +1,15 @@
+.Chat-main
+  .Chat-main__group-info
+    .group-name
+      .group-name__index
+        .group-name__index--text
+          = @group.name
+        .group-name__index--memmber 
+          Member :
+          %ul
+            - @group.users.each do |user|
+              %li= user.name
+    .group-name__edit
+      = link_to "Edit", edit_group_path(@group), class: "group-name__edit--btn"
+  .Chat-main__message-list
+    = render @tweets

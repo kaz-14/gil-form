@@ -14,6 +14,9 @@
         %a{:href => "/"} GIL
     .header__bar
       - if user_signed_in?
+        .gruop__list
+          = link_to groups_path do
+            = icon('fas', 'bars')
         .group-info__new
           = link_to new_group_path do
             = icon('fas', 'edit')
@@ -39,6 +42,6 @@
           = link_to "ログイン", new_user_session_path, class: 'post'
           = link_to "新規登録", new_user_registration_path, class: 'post'
     = yield
-    .footer
-      Growth Is Life 2020.
+    -# .footer
+    -#   Growth Is Life 2020.
 
