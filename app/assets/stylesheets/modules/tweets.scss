@@ -1,3 +1,7 @@
+.content{
+  margin-left: 150px;
+}
+
 .search-form{
   background-color: #555555;
   text-align: center;
@@ -6,7 +10,7 @@
   top: 50px;
 }
 
-.contents.row{
+.contents{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -27,16 +31,16 @@
   }
 }
 
-.contents.row::-webkit-scrollbar{
+.contents::-webkit-scrollbar{
   display: none;
 }
 
 .content_image{
-  width: 100px;
+  width: 70px;
   margin: 20px 35px 0 35px;
   padding: 130px;
   position: relative;
-  height: 60px;
+  height: 40px;
   color: #fff;
   background-size: cover;
   background-position: center;
@@ -114,6 +118,7 @@
 
 .content__description{
   box-shadow: 0 0 10px rgba(1, 41, 41, 41);
+  height: 100px;
   margin: 0 35px;
   position: relative;
   padding: 0 100px;
@@ -149,6 +154,11 @@
 
 .content_text::-webkit-scrollbar{
   display: none;
+}
+
+.content__user{
+  display: flex;
+  
 }
 
 .container{

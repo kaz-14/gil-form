@@ -1,15 +1,11 @@
-.Chat-main
-  .Chat-main__group-info
-    .group-name
-      .group-name__index
-        .group-name__index--text
-          = @group.name
-        .group-name__index--memmber 
-          Member :
-          %ul
-            - @group.users.each do |user|
-              %li= user.name
-    .group-name__edit
-      = link_to "Edit", edit_group_path(@group), class: "group-name__edit--btn"
-  .Chat-main__message-list
-    = render @tweets
+%h1 グループ一覧
+- if user_signed_in?
+  %h2
+    Come on #{current_user.nickname}
+  .Group__list
+    .more_list
+    - current_user.groups.each do |group|
+      .Group
+        = link_to group_group_tweets_path(group)do
+          .Group__name
+            = group.name

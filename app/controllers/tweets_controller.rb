@@ -4,24 +4,16 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   
   def index
-    @tweets = Tweet.includes(:user).order("created_at DESC")
+    @tweets = Tweet.published.order("created_at DESC")
   end
 
   def new
     @tweet = Tweet.new
-    @tweet = Tweet.create(tweet_params)
-    @group = Group.find_by(id: params[:group_id])
   end
 
   def create
     Tweet.create(tweet_params)
     redirect_to root_path
-    @group = Group.find_by(id: params[:group_id])
-    # @tweet.group_id = params[:group_id]
-    # i GroupUser.where(:user_id => current_user.id, :group_id => params[:tweet][:group_id]).present?
-    #   @tweet = Tweet.create(params.require(:tweet).permit(:user_id, :content, :image, :group_id).merge(:user_id => current_user.id))
-    #   redirect_to "/groups/#{@tweet.group_id}"
-    # end
   end
 
   def destroy
@@ -39,6 +31,14 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
+
+    @tweet = Tweet.find_by(id: params[:id])
+
+    if  @tweet.nil?
+      redirect_to root_path
+    elsif @tweet.draft?
+      login_required
+    end
   end
 
 
@@ -46,9 +46,17 @@ class TweetsController < ApplicationController
     @tweets = Tweet.search(params[:keyword])
   end
 
+  def confirm
+    @tweets = Tweet.draft.order("created_at DESC")
+  end
+
+  def login_required
+    redirect_to login_url unless current_user
+  end
+
   private
   def tweet_params
-    params.require(:tweet).permit(:title, :image, :text, :gruop_id).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:title, :image, :text, :status).merge(user_id: current_user.id)
   end
 
   def set_tweet
@@ -59,6 +67,3 @@ class TweetsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 end
-  # def set_group
-  #   @group = Group.find(params[:group_id])
-  # end

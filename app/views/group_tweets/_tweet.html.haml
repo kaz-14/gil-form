@@ -1,0 +1,30 @@
+.content_post
+  - if group__tweet.image?
+    .content_image
+      = link_to group_group_tweet_path(group__tweet:id) do
+        = image_tag group__tweet.image.url, :size => '100x100', class: 'image__box'
+  - else
+    .content_image
+      = link_to group_group_tweet_path(group__tweet:id) do
+        = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
+  .content__description
+    .content__title
+      .content__text
+      = group__tweet.title
+      -# .content__favorite
+      -# - if current_user.favorited_by?(group__tweet.id)
+      -#   %td
+      -#   = link_to destroy_favorite_path(group__tweet), method: :DELETE do
+      -#     = icon('fas', 'heart')
+      -#   = tweet.favorites.count
+      -# - else
+      -#   %td
+      -#   = link_to create_favorite_path(group__tweet), method: :POST do
+      -#     = icon('far', 'heart')
+      -#   = tweet.favorites.count
+    .content__user
+      = link_to group_group_tweet_path(group__tweet:id) do
+      %a{:href => "/users/#{group__tweet.user.id}"}
+        = group__tweet.user.nickname
+      .content__follow
+        =#render partial: "users/follow", locals: { user: @user }

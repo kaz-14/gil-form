@@ -21,6 +21,32 @@
     font-size: 40px;
     height: 60px;
   }
+  &__pick-stream{
+    background-color: #ffffff;
+    padding-top: 24px;
+    position: absolute;
+    height: calc(100vh - 60px); 
+    width: 150px;
+    left: 0;
+    &__box{
+      color: inherit;
+      text-decoration: none;
+      outline: 0;
+      padding-bottom: 12px;
+      border-bottom: solid 2px #EAEAEA;
+      &__user{
+        width: 48px;
+        height: 48px;
+        margin: auto;
+      }
+      }
+    }
+  &__side_bar{
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
   &__bar{
     display: flex;
     height: 50px;
@@ -34,6 +60,10 @@
       padding: 15px 0 0 15px;
     }
   }
+}
+
+.user_info{
+  text-align: center;
 }
 
 .user_nav{

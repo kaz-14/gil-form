@@ -12,7 +12,7 @@
           = fields_for @entry do |e|
             = e.hidden_field :user_id, :value=> @user.id
           = f.submit "チャットを始める"
-    = link_to "ユーザー一覧に戻る", users_path
+    = link_to "DMをする", users_path
   .content__mypage__name
     = @nickname
     さんの投稿一覧

@@ -26,6 +26,8 @@
       .content__user--name
         %a{:href => "/users/#{@tweet.user.id}"}
           = @tweet.user.nickname
+    .content_text
+      = @tweet.text
     .container
       .container
         - if current_user

@@ -1,0 +1,46 @@
+.contents.row
+  .content_post
+    .content_image{:style => "background-image: url(#{@group_tweet.image});"}
+      - if user_signed_in? && current_user.id == @group_tweet.user_id
+        .more
+          %ul.more_list
+            %li
+              = link_to '編集', edit_tweet_path(@tweet.id), method: :get
+            %li
+              = link_to '削除', group_tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' }
+    .content__description
+      .content__title
+        .content__text
+        = @group_tweet.title
+        -# .content__favorite
+        -# - if current_user.favorited_by?(@group_tweet.id)
+        -#   %td
+        -#   = link_to destroy_favorite_path(@group_tweet), method: :DELETE do
+        -#     = icon('fas', 'heart')
+        -#   = @group_tweet.favorites.count
+        -# - else
+        -#   %td
+        -#   = link_to create_favorite_path(@tweet), method: :POST do
+        -#     = icon('far', 'heart')
+        -#   = @group_tweet.favorites.count
+      .content__user--name
+        %a{:href => "/users/#{@group_tweet.user.id}"}
+          = @group_tweet.user.nickname
+    -# .container
+    -#   .container
+    -#     - if current_user
+    -#       = form_with(model: [@tweet, @comment], local: true) do |form|
+    -#         = form.text_area :text, placeholder: "コメントする", rows: "2"
+    -#         = form.submit "SEND"
+    -#     - else
+    -#       %strong
+    -#         %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+    -#     .comments
+    -#       %h4 ＜コメント一覧＞
+    -#       - if @comments
+    -#         - @comments.each do |comment|
+    -#           %p
+    -#             %strong
+    -#               = link_to comment.user.nickname, "/users/#{comment.user_id}"
+    -#               ：
+    -#             = comment.text

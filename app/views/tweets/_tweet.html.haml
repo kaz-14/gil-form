@@ -22,8 +22,8 @@
       -#   = link_to create_favorite_path(tweet), method: :POST do
       -#     = icon('far', 'heart')
       -#   = tweet.favorites.count
-    .content__user--name
+    .content__user
       %a{:href => "/users/#{tweet.user.id}"}
         = tweet.user.nickname
       .content__follow
-        =#render partial: "users/follow", locals: { user: @user }
+        = render partial: "users/follow", locals: { user: @user }

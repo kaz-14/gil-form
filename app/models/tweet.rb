@@ -1,9 +1,9 @@
 class Tweet < ApplicationRecord
   validates :text, presence: true
   belongs_to :user
-  belongs_to :group, optional: true
   has_many :comments
   has_many :favorites
+  enum status: { draft: 0, published: 1 }
 
   mount_uploader :image, ImageUploader
 
