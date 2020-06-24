@@ -67,3 +67,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'enum_help'
+
+gem 'better_errors'
