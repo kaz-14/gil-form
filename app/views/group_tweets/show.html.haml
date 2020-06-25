@@ -5,9 +5,9 @@
         .more
           %ul.more_list
             %li
-              = link_to '編集', edit_tweet_path(@tweet.id), method: :get
+              = link_to '編集', edit_group_group_tweet_path(@group_tweet.id), method: :get
             %li
-              = link_to '削除', group_tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' }
+              = link_to '削除', group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' }
     .content__description
       .content__title
         .content__text
@@ -26,6 +26,8 @@
       .content__user--name
         %a{:href => "/users/#{@group_tweet.user.id}"}
           = @group_tweet.user.nickname
+    .content_text
+      = @group_tweet.text
     -# .container
     -#   .container
     -#     - if current_user

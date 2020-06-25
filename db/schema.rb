@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_142732) do
+ActiveRecord::Schema.define(version: 2020_06_25_032334) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -88,6 +88,18 @@ ActiveRecord::Schema.define(version: 2020_06_24_142732) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.datetime "target_at"
+    t.datetime "completed_at"
+    t.boolean "completed", default: false, null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "text"
     t.string "image"
@@ -122,5 +134,6 @@ ActiveRecord::Schema.define(version: 2020_06_24_142732) do
   add_foreign_key "group_users", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "tasks", "users"
   add_foreign_key "tweets", "groups"
 end

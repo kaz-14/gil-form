@@ -1,5 +1,6 @@
 class GroupTweetsController < ApplicationController
   before_action :set_group, :only => [:index, :create, :show, :new]
+  before_action :set_group_tweet, only: [:show, :destroy, :update]
 
   def index
     @group_tweets = @group.group_tweets.includes(:user).order("created_at DESC")
@@ -11,9 +12,12 @@ class GroupTweetsController < ApplicationController
   end
 
   def show
-    @group_tweet = GroupTweet.new
-    @group_tweet = Group.find(params[:id])
+    @group_tweet = GroupTweet.find(params[:id])
+    # @group_tweet = Group.find(params[:id])
     @group_tweets = @group.group_tweets.includes(:user)
+  end
+
+  def edit
   end
 
   def create
@@ -34,12 +38,25 @@ class GroupTweetsController < ApplicationController
     #   render :index
     # end
   end
+
+  def update
+    @group_tweet.update(group_tweet_params)
+  end
+
+  def destroy
+    @group_tweet.destroy
+    redirect_to root_path
+  end
+
   private
 
   def group_tweet_params
     params.require(:group_tweet).permit(:title, :image, :text, :group_id).merge(user_id: current_user.id)
   end
 
+  def set_group_tweet
+    @group_tweet = GroupTweet.find(params[:id])
+  end
   
   def set_group
     @group = Group.find(params[:group_id])

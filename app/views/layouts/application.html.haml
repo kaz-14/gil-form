@@ -11,25 +11,28 @@
 .header
   - if user_signed_in?
     .header__logo
-      .grid-6
-        %a{:href => "/"} GIL
-    .header__pick-stream
-      .header__pick-stream__box
-        .header__pick-stream__box__user
-          - if current_user.image?
-            .header__pick-stream__box__user__image
-              = image_tag current_user.image.url, :size => '40x40'
-          - else
-            .header__pick-stream__box__user__image
-              = image_tag "/assets/default.png", :size => '40x40'
-        .user_info
-          = current_user.nickname
-          .user-info__edit
-            = link_to edit_user_path(current_user) do
-              = icon('fas', 'cog')
-          .follow-info
-            .follower_num
-              -# = @users.following.count
+      .ligo_image
+        = link_to root_path do
+          = image_tag "/assets/GIL-logo-black.png", :size => '50x50', class: 'image__log'
+    -# .header__pick-stream
+    -#   .header__pick-stream__box
+    -#     .header__pick-stream__box__user
+    -#       - if current_user.image?
+    -#         .header__pick-stream__box__user__image
+    -#           = image_tag current_user.image.url, :size => '40x40'
+    -#       - else
+    -#         .header__pick-stream__box__user__image
+    -#           = image_tag "/assets/default.png", :size => '40x40'
+    -#     .user_info
+    -#       = current_user.nickname
+    -#       .user-info__edit
+    -#         = link_to edit_user_path(current_user) do
+    -#           = icon('fas', 'cog')
+    -#       .follow-info
+    -#         .following_num 
+    -#           = @user.following.count
+    -#         .follower_num 
+    -#           = @user.follower.count
     .header__side_bar
       = link_to groups_path do
         = icon('fas', 'bars')
@@ -38,7 +41,10 @@
           = icon('fas', 'edit')
       .draft_list
         = link_to confirm_tweets_path do
-          = icon('fas', 'edit')
+          = icon('fas', 'drafting-compass')
+      .task_info
+        = link_to tasks_path do
+          = icon('fas', 'thumbtack')
     .header__bar
       - if current_user.image?
         .header__bar__user_image

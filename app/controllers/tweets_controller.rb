@@ -1,7 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:edit, :show, :destroy, :update]
   before_action :move_to_index, except: [:index, :show, :search]
-  before_action :authenticate_user!, only: [:create]
   
   def index
     @tweets = Tweet.published.order("created_at DESC")

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # get 'tasks/index'
+  # get 'tasks/show'
+  # get 'tasks/new'
+  # get 'tasks/edit'
   # get 'relationships/create'
   # get 'relationships/destroy'
   devise_for :users
@@ -20,9 +24,10 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    resources :group_tweets, only: [:new, :create, :index, :show]
+    resources :group_tweets
   end
   
+  resources :tasks
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
   resources :messages, only: [:create]

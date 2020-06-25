@@ -3,14 +3,4 @@
     = form_with(model: [@group, @group_tweet], local: true) do |form|
       %h3
         投稿する
-      .form-content
-        = form.text_field :title, placeholder: "タイトル" 
-        = label :image, class: 'form-image' do
-          = form.file_field :image, placeholder: "画像" 
-        = form.text_area :text, placeholder: "文章" , rows: "10"
-        -# .form-content__group
-        -#   - current_user.groups.each do |group|
-        -#     %label.form-content__group__label グループに投稿
-        -#     .form-content__group__box
-        -#       = form.collection_radio_buttons :group_id, Group.all, :id, :name
-        = form.submit "SEND"
+      = render partial: "form", locals: { form: form }

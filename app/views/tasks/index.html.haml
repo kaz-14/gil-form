@@ -1,0 +1,17 @@
+%h1 Tasks#index
+%p Find me in app/views/tasks/index.html.erb
+%table
+  %tr
+    %th Title
+    %th Description
+    %th
+    %th
+    %th
+  - @tasks.each do |task|
+    %tr
+      %td= task.title
+      %td= task.description
+      %td= link_to 'Show', task_path(task)
+      %td= link_to 'Edit', edit_task_path(task)
+      %td= link_to 'Delete', task_path(task), method: :delete
+%p= link_to 'ToDoの作成', new_task_path
