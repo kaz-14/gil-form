@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  # get 'tasks/index'
-  # get 'tasks/show'
-  # get 'tasks/new'
-  # get 'tasks/edit'
-  # get 'relationships/create'
-  # get 'relationships/destroy'
   devise_for :users
   root to: 'tweets#index'
   resources :tweets do
@@ -24,12 +18,22 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    resources :group_tweets
+    resources :group_tweets do
+      collection do
+        get 'confirm'
+      end
+      collection do
+        get 'search'
+      end
+      resources :opinions, only: :create
+    end
   end
   
   resources :tasks
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
+  post 'like/:id' => 'likes#create', as: 'create_like'
+  delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
 end

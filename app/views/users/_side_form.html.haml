@@ -12,8 +12,10 @@
       .user-info__edit
         = link_to edit_user_path(current_user) do
           = icon('fas', 'cog')
-      .follow-info
-        .following_num 
-          = @user.following.count
-        .follower_num 
-          = @user.follower.count
+    -# .follow_content
+    -#   .follow_content__following
+    -#     = link_to "フォロー", follows_user_path(@user.id)
+    -#     = @user.followings.count
+    -#   .follow_content__followers
+    -#     = link_to "フォロワー", followers_user_path(@user.id)
+    -#     = @user.followers.count

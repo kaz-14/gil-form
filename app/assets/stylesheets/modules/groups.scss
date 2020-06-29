@@ -1,3 +1,8 @@
+.wrapper{
+  display: flex;
+}
+
+
 h1 {
   letter-spacing: 2px;
   font-size: 24px;
@@ -92,5 +97,95 @@ li {
   }
   &__remove {
     color: #f05050;
+  }
+}
+
+.group_content{
+  background-image: url(/assets/team.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-size: cover;
+  background-color: white;
+  height: calc(100vh - 120px);
+  overflow: scroll;
+  width: 100%;
+}
+
+
+.group_content::-webkit-scrollbar{
+  display: none;
+}
+
+.group___pick-stream{
+  background-color: #ffffff;
+  padding-top: 24px;
+  height: calc(100vh - 60px); 
+  width: 150px;
+  left: 0;
+  &__box{
+    color: inherit;
+    text-decoration: none;
+    outline: 0;
+    padding-bottom: 12px;
+    border-bottom: solid 2px #EAEAEA;
+  &__user{
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    }
+  }
+}
+
+.type-textbound {
+  font-size: 40px;
+  text-align: center;
+  .textbound1 {-webkit-animation: bound .3s ease-in-out;}
+  .textbound3 {-webkit-animation: bound .5s ease-in-out;}
+  .textbound2 {-webkit-animation: bound .7s ease-in-out;}
+  .textbound4 {-webkit-animation: bound .9s ease-in-out;}
+  .textbound5 {-webkit-animation: bound 1s ease-in-out;}
+  @-webkit-keyframes bound {
+    0% {transform: scale(0) translate(0,-500px);}
+    50% {transform: scaleX(2) translate(0,200px);}
+    70% {transform: scaleY(.5) translate(0,-100px);}
+    90% {transform: scaleX(1.5) translate(0,50px);}
+    100% {transform: scale(1) translate(0,0);}
+  }
+}
+
+.client__name{
+  margin-left: 20px;
+  position: absolute;
+  left: 160px;
+  top: 150px;
+  padding: 0 .5em;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #ff9ece;
+  z-index: 1;
+  border: 2px solid #ff9ece;
+  background-color: #fff;
+}
+
+.group__more{
+  margin-left: 20px;
+  height: auto;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  padding: 1.2em;
+  width: 35%;
+  border: 2px solid #ff9ece;
+  color: #555555;
+  background-color: #fff;
+  box-shadow: 2px 2px 1px #c7c7c7;
+  border-radius: 20px;
+  a{
+    text-decoration: none;
+    color: #000000;
+    font-size: 15px;
+    font-weight: bold;
+    
   }
 }

@@ -1,9 +1,10 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:edit, :show, :destroy, :update]
   before_action :move_to_index, except: [:index, :show, :search]
-  
+
   def index
     @tweets = Tweet.published.order("created_at DESC")
+    @users =  User.all
   end
 
   def new
@@ -30,23 +31,24 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
-
     @tweet = Tweet.find_by(id: params[:id])
-
     if  @tweet.nil?
       redirect_to root_path
     elsif @tweet.draft?
       login_required
     end
+    @users = User.all
   end
 
 
   def search
     @tweets = Tweet.search(params[:keyword])
+    @users = User.all
   end
 
   def confirm
     @tweets = Tweet.draft.order("created_at DESC")
+    @users = User.all
   end
 
   def login_required

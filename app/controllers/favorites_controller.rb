@@ -12,6 +12,6 @@ class FavoritesController < ApplicationController
 
   private
   def set_tweet
-    @tweet = Tweet.find(params[:tweet_id])
+    @tweet = Tweet.find_by(params[:tweet_id])
   end
 end

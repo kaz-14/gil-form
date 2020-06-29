@@ -3,8 +3,8 @@
   = label :image, class: 'form-image' do
     = form.file_field :image, placeholder: "画像" 
   = form.text_area :text, placeholder: "文章" , rows: "10"
-  = form.select :status, Tweet.statuses.keys.map { |k| [t("enums.tweet.status.#{k}"),k]}
+  -# = form.select :status, Tweet.statuses.keys.map { |k| [t("enums.tweet.status.#{k}"),k]}
   %select#tweet_status{:name => "tweet[status]"}
-  %option{:selected => "selected", :value => "draft"} 下書き
-  %option{:value => "published"} 公開中
+    %option{:selected => "selected", :value => "draft"} 下書き
+    %option{:value => "published"} 公開中
   = form.submit "SEND"

@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :favorites
   has_many :favorite_tweets, through: :favorites
+  has_many :likes
+  has_many :likes_group_tweets, through: :likes
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :tasks, dependent: :destroy
@@ -21,6 +23,10 @@ class User < ApplicationRecord
 
   def favorited_by?(tweet_id)
     favorites.where(tweet_id: tweet_id).exists?
+  end
+
+  def liked_by?(group_tweet_id)
+    likes.where(group_tweet_id: group_tweet_id).exists?
   end
 
   def followed_by?(user)

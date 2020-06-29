@@ -13,6 +13,18 @@
             = e.hidden_field :user_id, :value=> @user.id
           = f.submit "チャットを始める"
     = link_to "DMをする", users_path
+  .follow_content
+    .follow_content__following
+      = link_to "フォロー", follows_user_path(@user.id)
+      = @user.followings.count
+    .follow_content__followers
+      = link_to "フォロワー", followers_user_path(@user.id)
+      = @user.followers.count
+    - if current_user != @user
+      - if @user.followed_by?(current_user)
+        %p= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete
+      - else
+        %p= link_to "フォローする", user_relationships_path(@user.id), method: :post
   .content__mypage__name
     = @nickname
     さんの投稿一覧

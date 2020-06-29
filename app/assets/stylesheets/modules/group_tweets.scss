@@ -1,3 +1,389 @@
-// Place all the styles related to the group_tweets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.group_outer{
+  position: relative;
+  margin-left: 150px;
+  height: calc(100vh - 120px);
+  overflow: scroll;
+	background-color: #cbf4fa;
+	background-image:
+	linear-gradient(-90deg, #8ecbd3 50%, transparent 50%, transparent);
+	background-size: 14px 14px;
+}
+.Group__name{
+  display: flex;
+  position: absolute;
+  left: 20px;
+  margin:0;
+  padding:10px;
+  font-size:20px;
+  font-family:bold;
+  text-shadow: 0 1px 0 #ccc,
+          0 2px 0 #c9c9c9,
+          0 3px 0 #bbb,
+          0 4px 0 #b9b9b9,
+          0 5px 0 #aaa,
+          0 6px 1px rgba(0,0,0,.1),
+          0 0 5px rgba(0,0,0,.1),
+          0 1px 3px rgba(0,0,0,.3),
+          0 3px 5px rgba(0,0,0,.2),
+          0 5px 10px rgba(0,0,0,.25),
+          0 10px 10px rgba(0,0,0,.2),
+          0 20px 20px rgba(0,0,0,.15);
+}
+
+.groups_content_row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+
+.group_outer::-webkit-scrollbar{
+  display: none;
+}
+
+.group_post{
+  background-color: white;
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  padding: 8px 20px;
+  border: 2px solid rgba(0,0,0,.15);
+  color: rgba(63, 61, 61, 0.719);
+  font-weight: hold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.group__search{
+	background-color: #cbf4fa;
+	background-image:
+	linear-gradient(-90deg, #8ecbd3 50%, transparent 50%, transparent);
+	background-size: 14px 14px;
+  text-align: center;
+  align-items: center;
+  height: 50px;
+  top: 50px;
+}
+.group_search-input{
+  width: 300px;
+  margin: 10px;
+}
+
+.contents{
+  .success{
+    margin: 20px 0;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+    background-color: white;
+    box-sizing: border-box;
+    text-align: center;
+    h3{
+      margin: 10px auto;
+    }
+  }
+}
+
+.contents::-webkit-scrollbar{
+  display: none;
+}
+
+.screan__text{
+  padding: 0 40px 0px;
+  background-color: #eeeeee;
+  text-align: center;
+  h4 {
+    position: relative;
+    background: #eff4ff;
+    padding: 2px 5px 2px 20px;
+    font-size: 20px;
+    color: #474747;
+    border-radius: 0 10px 10px 0;
+  }
+  h4:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f041";
+    display: inline-block;
+    line-height: 40px;
+    position: absolute;
+    padding: 0em;
+    color: white;
+    background: #81a1e4;
+    font-weight: 900;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    left: -1.35em;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 50%;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.29);
+    border-bottom: solid 2px #4967b4;
+  }
+}
+
+.content_image{
+  width: 70px;
+  margin: 20px 35px 0 35px;
+  padding: 130px;
+  position: relative;
+  height: 40px;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(41, 41, 1, 41);
+  p{
+    position: absolute;
+    left: 30px;
+    right: 100px;
+    bottom: 30px;
+    margin: 0;
+    font-size: 10px;
+    z-index: 2;
+    font-weight: bold;
+    text-shadow: 0 0 2px #000, 0 0 1px #000, 0 0 1px #000;
+  }
+  span{
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    z-index: 2;
+    font-size: 13px;
+  }
+  a{
+    display: block;
+    color: #aaa;
+    text-decoration: underline;
+  }
+}
+
+.image__box{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.more{  
+  position: absolute;
+  cursor: pointer;
+  top: 15px;
+  right: 20px;
+  z-index: 2;
+  height: 40px;
+  text-align: right;
+}
+
+.more_list{
+  ul{
+    position: absolute;
+    text-align: left;
+    width: 80px;
+    right: 0;
+    font-size: 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: none;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+  li{
+    background-color: #000;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 20px;
+    font-size: 15px;
+    border: 2px solid #eeee;
+    color: #eeee;
+    font-weight: hold;
+    text-align: center;
+    display: inline-block;
+  }
+}
+
+.content__group__description{
+  box-shadow: 0 0 10px rgba(1, 41, 41, 41);
+  background-color: #d6fffd;
+  margin: 0 35px;
+  width: 130px;
+  height: 125px;
+  position: relative;
+  padding: 0 140px 0 60px;
+  padding-top: 20px;
+  z-index: 2;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgb(248, 245, 245), 0 0 1px rgb(247, 243, 243), 0 0 1px rgb(236, 234, 234);
+  a{
+    color: rgb(63, 62, 62);
+    bottom: 0;
+    padding: 10px 0 0 0;
+  }
+}
+
+.content__title{
+  width: 200px;
+}
+
+.content__favorite{
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  i{
+    color: #f731b5;
+  }
+}
+
+hr{
+  position: absolute;
+  left: 5px;
+  height: 1px;
+  background-color: rgb(190, 190, 190);
+  width: 97%;
+  border: none;
+}
+
+.content__user{
+  display: flex;
+  position: absolute;
+  bottom: 3px;
+  left: 10px;
+  img{
+    margin-right: 10px;
+    width:  45px; 
+    height: 45px;
+    border-radius: 60%; 
+    border: 1px solid rgb(190, 190, 190);
+  }
+  a{
+    color: rgb(63, 62, 62);
+    bottom: 0;
+    padding: 10px 0 0 0;
+    text-decoration: none;
+  }
+}
+
+.content__follow{
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: #f7f7f7;
+  border-left: solid 6px #ff7c5c;/*左線*/
+  color: #ff7c5c;/*文字色*/
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  a{
+    text-decoration: none;
+  }
+}
+
+.content__follow:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+}
+
+.content_text{
+  padding: 10px;
+  background-color: white;
+  color:#000;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 41);
+  height: 200px;
+  overflow-x: scroll;
+  scrollbar-color: white;
+  font-family: "游ゴシック", "YuGothic";
+  text-align: justify;
+  white-space: pre;
+  p{
+    text-align: center;
+  }
+}
+
+.content_text::-webkit-scrollbar{
+  display: none;
+}
+
+
+.container{
+  margin-top: 30px;
+  width: 500px;
+  position: relative;
+  background: #D8D8D8;
+  box-shadow: 0px 0px 0px 5px #D8D8D8;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+  .comments__box{
+    display: flex;
+  }
+  &__form{
+    display: flex;
+  }
+  textarea {
+    width: 300px;
+    margin: 5px 0 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: "游ゴシック", "YuGothic";
+  }
+  input[type="submit"] {
+    height: 45px;
+    display: inline-block;
+    margin: 27px 0 0 10px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;
+    color: #FFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 5px #668ad8;
+    border: dashed 1px #FFF;
+  }
+  form input[type="submit"]:hover {
+    border: dotted 1px #FFF;
+  }
+  strong{
+    display: flex;
+  }
+  img{
+    margin-right: 10px;
+    width:  45px; 
+    height: 45px;
+    border-radius: 60%; 
+    border: 1px solid rgb(190, 190, 190);
+  }
+  a{
+    color: rgb(63, 62, 62);
+    text-decoration: none;
+  }
+}
+.container:after{
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: -7px;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: #D8D8D8 #fff #D8D8D8;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.container p {
+  margin: 0; 
+  padding: 0;
+}
+
+.container::-webkit-scrollbar{
+  display: none;
+}
+
+.form-content{
+  display: flex;
+  flex-direction: column;
+}
+

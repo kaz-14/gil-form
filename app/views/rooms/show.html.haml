@@ -1,31 +1,45 @@
-%h1 DM
-%h4 参加者
-- @entries.each do |e|
-  %h5
-    %strong
-      %a{:href => "/users/#{e.user.id}"}
-        = e.user.email
-        さん
-%hr/
-- if @messages.present?
-  - @messages.each do |m|
-    %strong= m.content
-    %small
-      by
-      %strong
-        %a{:href => "/users/#{m.user_id}"}
-          = m.user.nickname
-          さん
-    %hr/
-- else
-  %h3.text-center メッセージはまだありません
-= form_for @message do |f|
-  .form
-    = f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70
-    = f.hidden_field :room_id, :value => @room.id
-    %br/
-    = f.label :image, class: 'form＿_image' do
-      = icon('far', 'image')
-      = f.file_field :image, class: 'form__file'
-  = f.submit "投稿する"
-= link_to "ユーザー一覧に戻る", users_path
+.room_content
+  .sub_contents
+    = render partial: "users/side_form"
+  .room__message
+    .room__link
+      = link_to "ユーザー一覧に戻る", users_path
+    .room__menber
+      .room___menber__chat__header
+        .room___menber__user__status
+          .room__user__name
+            - @entries.each do |e|
+              - if current_user.id != e.user.id
+                %a{:href => "/users/#{e.user.id}"}
+                  = e.user.nickname
+                  さん
+    .messege_list
+      - if @messages.present?
+        - @messages.each do |m|
+          - if current_user.id == m.user.id
+            .messege_list__left
+              .messege_list__left__box
+                .messege_list__left__box__contet
+                  - if m.content.present?
+                    %strong= m.content
+                  = image_tag m.image.url, class: 'message-box__image' if m.image.present?
+            .bms_clear
+          - else
+            .messege_list__right
+              .messege_list__right__box
+                .messege_list__right_box__content
+                  - if m.content.present?
+                    %strong= m.content
+                  = image_tag m.image.url, class: 'message-box__image' if m.image.present?
+            .bms_clear
+      - else
+        %h3.text-center メッセージはまだありません
+      = form_for @message do |f|
+        .message__list__content
+          .message__form
+            = f.text_field :content, :placeholder => "メッセージを入力して下さい" , class: 'message__form__text', :size => 70
+            = f.hidden_field :room_id, :value => @room.id
+            = f.label :image, class: 'message__form__image' do
+              = icon('far', 'image')
+              = f.file_field :image, class: 'message__form__file'
+          = f.submit "投稿する", class: 'message__form__btn'
