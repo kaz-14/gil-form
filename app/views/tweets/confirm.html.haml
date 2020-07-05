@@ -1,0 +1,9 @@
+.sub_contents
+  = render partial: "side_form"
+.content 
+  .screan__text
+    %h4 下書き一覧
+  .contents.row
+    - @tweets.each do |tweet|
+      - if current_user.id == tweet.user.id
+        = render partial: "tweet", locals: { tweet: tweet }

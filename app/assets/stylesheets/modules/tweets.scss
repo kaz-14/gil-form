@@ -1,19 +1,34 @@
+.content{
+  margin-left: 150px;
+}
+
+.content::-webkit-scrollbar{
+  display: none;
+}
+
 .search-form{
   background-color: #555555;
   text-align: center;
   align-items: center;
-  height: 60px;
   top: 50px;
 }
 
-.contents.row{
-  text-align: center;
+.public_search-input{
+  width: 300px;
+  margin: 10px;
+}
+
+.contents{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  background-color: #eeeeee;
-  height: calc(100vh - 50px);
+  text-align: center;
+  height: calc(100vh - 120px);
   overflow: scroll;
+  background-color: #dedede;
+	background-image:
+	linear-gradient(#ecebeb 50%, transparent 50%, transparent);
+	background-size: 10px 10px;
   .success{
     margin: 20px 0;
     padding: 30px;
@@ -27,16 +42,61 @@
   }
 }
 
+.contents::-webkit-scrollbar{
+  display: none;
+}
+
+.screan__text{
+  padding: 0 40px 0px;
+  background-color: #eeeeee;
+  text-align: center;
+  h4 {
+    position: relative;
+    background: #eff4ff;
+    padding: 2px 5px 2px 20px;
+    font-size: 20px;
+    color: #474747;
+    border-radius: 0 10px 10px 0;
+  }
+  h4:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f041";
+    display: inline-block;
+    line-height: 40px;
+    position: absolute;
+    padding: 0em;
+    color: white;
+    background: #81a1e4;
+    font-weight: 900;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    left: -1.35em;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 50%;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.29);
+    border-bottom: solid 2px #4967b4;
+  }
+}
+
+.content_post{
+  position: relative;
+}
+
 .content_image{
+  width: 70px;
   margin: 20px 35px 0 35px;
   padding: 130px;
   position: relative;
-  height: 60px;
+  height: 40px;
   color: #fff;
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   border-radius: 3px;
-  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  box-shadow: 0 0 10px rgba(41, 41, 1, 41);
   p{
     position: absolute;
     left: 30px;
@@ -59,22 +119,89 @@
     display: block;
     color: #aaa;
     text-decoration: underline;
-    color: #aaa;
   }
+}
+
+.image__box{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.content__tags{
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	top: 10%;
+	left: 25%;
+	-webkit-transform: translate(-50%,-50%);
+					transform: translate(-50%,-50%);
+}
+.content__tags a {
+	line-height: 26px;
+	position: relative;
+	display: inline-block;
+	height: 26px;
+	margin: 0 10px 10px 0;
+	padding: 0 20px 0 23px;
+	-webkit-transition: color 0.2s;
+	        transition: color 0.2s;
+	text-decoration: none;
+	color: #455a64;
+	border-radius: 3px 0 0 3px;
+	background: #cfd8dc;
+}
+.content__tags a::before, .cp_tag01 a::after {
+	background: #fafcfc;/*背景色*/
+}
+.content__tags a::before {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 6px;
+	height: 6px;
+	content: '';
+	border-radius: 10px;
+}
+.content__tags a::after {
+	position: absolute;
+	top: -2px;
+	right: -6px;
+	width: 0;
+	height: 0;
+	content: '';
+	border-width: 15px 0 15px 8px;
+	border-style: solid;
+	border-color: transparent transparent transparent #cfd8dc;
+	border-radius: 4px;
+}
+.content__tags a:hover {
+	color: #ffffff;
+	background-color: #ec407a;
+}
+.content__tags a:hover::after {
+	border-left-color: #ec407a;
 }
 
 .more{  
   position: absolute;
   cursor: pointer;
-  top: 20px;
-  right: 30px;
+  top: 15px;
+  right: 20px;
   z-index: 2;
   height: 40px;
   text-align: right;
 }
 
 .more_list{
-  ul{position: absolute;
+  ul{
+    position: absolute;
     text-align: left;
     width: 80px;
     right: 0;
@@ -86,47 +213,195 @@
     border-radius: 3px;
   }
   li{
+    background-color: #000;
     border-bottom: 1px solid #ddd;
+    padding: 8px 20px;
+    font-size: 15px;
+    border: 2px solid #eeee;
+    color: #eeee;
+    font-weight: hold;
+    text-align: center;
+    display: inline-block;
+  }
+}
+
+.content__description{
+  box-shadow: 0 0 10px rgba(1, 41, 41, 41);
+  margin: 0 35px;
+  width: 130px;
+  height: 125px;
+  position: relative;
+  padding: 0 140px 0 60px;
+  padding-top: 20px;
+  z-index: 2;
+  font-weight: bold;
+  text-shadow: 0 0 2px rgb(248, 245, 245), 0 0 1px rgb(247, 243, 243), 0 0 1px rgb(236, 234, 234);
+  a{
+    color: rgb(63, 62, 62);
+    bottom: 0;
+    padding: 10px 0 0 0;
+  }
+}
+
+.content__title{
+  width: 200px;
+}
+
+.content__favorite{
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  i{
+    color: #f731b5;
+  }
+}
+
+hr{
+  position: absolute;
+  left: 5px;
+  height: 1px;
+  background-color: rgb(190, 190, 190);
+  width: 97%;
+  border: none;
+}
+
+.content__user{
+  display: flex;
+  position: absolute;
+  bottom: 3px;
+  left: 10px;
+  img{
+    margin-right: 10px;
+    width:  45px; 
+    height: 45px;
+    border-radius: 60%; 
+    border: 1px solid rgb(190, 190, 190);
   }
   a{
-    display: block;
-    padding: 5px;
+    color: rgb(63, 62, 62);
+    bottom: 0;
+    padding: 10px 0 0 0;
+    text-decoration: none;
   }
+}
+
+.content__follow{
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: #f7f7f7;
+  border-left: solid 6px #ff7c5c;/*左線*/
+  color: #ff7c5c;/*文字色*/
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  a{
+    text-decoration: none;
+  }
+}
+
+.content__follow:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
 }
 
 .content_text{
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  height: 60px;
-  margin: 0 35px;
-  position: relative;
+  padding: 10px;
+  background-color: white;
+  color:#000;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 41);
+  height: 200px;
+  overflow-x: scroll;
+  scrollbar-color: white;
+  font-family: "游ゴシック", "YuGothic";
+  text-align: justify;
+  white-space: pre;
   p{
-    font-size: 10px;
-    z-index: 2;
-    font-weight: bold;
-    text-shadow: 0 0 2px rgb(248, 245, 245), 0 0 1px rgb(247, 243, 243), 0 0 1px rgb(236, 234, 234);
+    text-align: center;
+  }
+}
+
+.content_text::-webkit-scrollbar{
+  display: none;
+}
+
+
+.container{
+  margin-top: 30px;
+  width: 500px;
+  position: relative;
+  background: #D8D8D8;
+  box-shadow: 0px 0px 0px 5px #D8D8D8;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+  .comments__box{
+    display: flex;
+  }
+  &__form{
+    display: flex;
+  }
+  textarea {
+    width: 300px;
+    margin: 5px 0 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: "游ゴシック", "YuGothic";
+  }
+  input[type="submit"] {
+    height: 45px;
+    display: inline-block;
+    margin: 27px 0 0 10px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;
+    color: #FFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 5px #668ad8;
+    border: dashed 1px #FFF;
+  }
+  form input[type="submit"]:hover {
+    border: dotted 1px #FFF;
+  }
+  strong{
+    display: flex;
+  }
+  img{
+    margin-right: 10px;
+    width:  45px; 
+    height: 45px;
+    border-radius: 60%; 
+    border: 1px solid rgb(190, 190, 190);
   }
   a{
-    display: block;
-    color: #aaa;
-    text-decoration: underline;
-    bottom: 0;
-    padding: 20px 0 0 0;
+    color: rgb(63, 62, 62);
+    text-decoration: none;
   }
 }
-
-form input,
-form textarea {
-  margin: 5px 0 15px;
-  padding: 10px;
-  border: 1px solid #D8D8D8;
-  border-radius: 5px;
-  font-family: "游ゴシック", "YuGothic";
+.container:after{
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: -7px;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: #D8D8D8 #fff #D8D8D8;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.container p {
+  margin: 0; 
+  padding: 0;
 }
 
-form input[type="submit"] {
-  background-color: #57C3E9;
-  border-radius: 20px;
-  color: #fff;
-  border: 0;
-  font-size: 18px;
+.container::-webkit-scrollbar{
+  display: none;
 }
+
+.form-content{
+  display: flex;
+  flex-direction: column;
+}
+

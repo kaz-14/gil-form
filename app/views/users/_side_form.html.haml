@@ -1,0 +1,21 @@
+.header__pick-stream
+  .header__pick-stream__box
+    .header__pick-stream__box__user
+      - if current_user.image?
+        .header__pick-stream__box__user__image
+          = image_tag current_user.image.url, :size => '40x40'
+      - else
+        .header__pick-stream__box__user__image
+          = image_tag "/assets/default.png", :size => '40x40'
+    .user_info
+      = current_user.nickname
+      .user-info__edit
+        = link_to edit_user_path(current_user) do
+          = icon('fas', 'cog')
+    -# .follow_content
+    -#   .follow_content__following
+    -#     = link_to "フォロー", follows_user_path(@user.id)
+    -#     = @user.followings.count
+    -#   .follow_content__followers
+    -#     = link_to "フォロワー", followers_user_path(@user.id)
+    -#     = @user.followers.count

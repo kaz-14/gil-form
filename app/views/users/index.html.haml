@@ -1,0 +1,15 @@
+.direct__mail
+  .sub_contents
+    = render partial: "side_form"
+  .user__mail
+    .user__mail__info
+      %h3 DM INFOMATION
+      - if user_signed_in?
+        %h5
+          Hello #{current_user.nickname}
+        .user__mail__list
+        - @users.each do |u|
+          %p
+            %a{:href => "/users/#{u.id}"}
+              = u.nickname
+              さん

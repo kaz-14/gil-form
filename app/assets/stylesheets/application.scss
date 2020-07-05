@@ -4,6 +4,16 @@
 @import "modules/layouts";
 @import "modules/users";
 @import "modules/tweets";
+@import "modules/groups";
+@import "modules/comments";
+@import "modules/favorites";
+@import "modules/group_tweets";
+@import "modules/rooms";
+@import "modules/messages";
+@import "modules/relationships";
+@import "modules/tasks";
+@import "modules/opinions";
+@import "modules/likes";
 
 
 /*
@@ -19,5 +29,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require jquery.tagit
+ *= require tagit.ui-zendesk
  *= require_self
  */

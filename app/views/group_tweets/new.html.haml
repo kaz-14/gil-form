@@ -1,0 +1,6 @@
+.group__contet
+  .group__container
+    = form_with(model: [@group, @group_tweet], local: true) do |form|
+      %h3
+        投稿する
+      = render partial: "form", locals: { form: form }

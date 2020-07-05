@@ -1,9 +1,13 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:edit, :show]
+  before_action :set_tweet, only: [:edit, :show, :destroy, :update]
   before_action :move_to_index, except: [:index, :show, :search]
-  
+
   def index
-    @tweets = Tweet.includes(:user).order("created_at DESC")
+    @tweets = Tweet.published.includes(:user).order("created_at DESC")
+    @users =  User.all
+    if params[:tag_name]
+      @tweets = Tweet.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def new
@@ -12,34 +16,51 @@ class TweetsController < ApplicationController
 
   def create
     Tweet.create(tweet_params)
+    redirect_to root_path
   end
 
   def destroy
-    tweet = Tweet.find(params[:id])
-    tweet.destroy
+    @tweet.destroy
+    redirect_to root_path
   end
 
   def edit
-    @tweet = Tweet.find(params[:id])
   end
 
   def update
-    tweet = Tweet.find(params[:id])
-    tweet.update(tweet_params)
+    @tweet.update(tweet_params)
   end
 
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
+    @tweet = Tweet.find_by(id: params[:id])
+    if  @tweet.nil?
+      redirect_to root_path
+    elsif @tweet.draft?
+      login_required
+    end
+    @users = User.all
   end
 
+
   def search
-    @tweets = Tweet.search(params[:keyword])
+    @tweets = Tweet.published.search(params[:keyword])
+    @users = User.all
+  end
+
+  def confirm
+    @tweets = Tweet.draft.order("created_at DESC")
+    @users = User.all
+  end
+
+  def login_required
+    redirect_to login_url unless current_user
   end
 
   private
   def tweet_params
-    params.require(:tweet).permit(:image, :text).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:title, :image, :text, :status, :tag_list).merge(user_id: current_user.id)
   end
 
   def set_tweet

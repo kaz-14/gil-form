@@ -1,6 +1,33 @@
-.contents.row
-  %p
+.content__mypage
+  .contet__direct
+    %h1 ユーザー詳細
+    %h2= @user.email
+    - if @user.id == current_user.id
+    - else
+      - if @isRoom == true
+        %p
+          %a{:href => "/rooms/#{@roomId}"} チャットへ
+      - else
+        = form_for @room do |f|
+          = fields_for @entry do |e|
+            = e.hidden_field :user_id, :value=> @user.id
+          = f.submit "チャットを始める"
+    = link_to "DMをする", users_path
+  .follow_content
+    .follow_content__following
+      = link_to "フォロー", follows_user_path(@user.id)
+      = @user.followings.count
+    .follow_content__followers
+      = link_to "フォロワー", followers_user_path(@user.id)
+      = @user.followers.count
+    - if current_user != @user
+      - if @user.followed_by?(current_user)
+        %p= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete
+      - else
+        %p= link_to "フォローする", user_relationships_path(@user.id), method: :post
+  .content__mypage__name
     = @nickname
     さんの投稿一覧
-  - @tweets.each do |tweet|
-    = render partial: "tweets/tweet", locals: { tweet: tweet }
+  .content__mypage__list
+    - @tweets.each do |tweet|
+      = render partial: "tweets/tweet", locals: { tweet: tweet }

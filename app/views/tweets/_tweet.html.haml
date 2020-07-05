@@ -1,16 +1,42 @@
 .content_post
-  .content_image{:style => "background-image: url(#{tweet.image});"}
-    .more
-      %ul.more_list
-        %li
-          = link_to '詳細', tweet_path(tweet.id), method: :get
-        - if user_signed_in? && current_user.id == tweet.user_id
-          %li
-            = link_to '編集', edit_tweet_path(tweet.id), method: :get
-          %li
-            = link_to '削除', tweet_path(tweet.id), method: :delete
-  .content_text
-    %p= tweet.text
-    .content_text__name
+  - if tweet.image?
+    .content_image
+      = link_to tweet_path(tweet.id) do
+        = image_tag tweet.image.url, :size => '100x100', class: 'image__box'
+  - else
+    .content_image
+      = link_to tweet_path(tweet.id) do
+        = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
+  .content__tags
+    .content__tags__list
+      = render 'shared/tag_list', tag_list: tweet.tag_list
+  .content__description
+    .content__title
+      .content__title__text
+        = tweet.title
+    .content__favorite
+      - if current_user.favorited_by?(tweet.id)
+        = link_to destroy_favorite_path(tweet), method: :DELETE do
+          = icon('fas', 'heart')
+        = tweet.favorites.count
+      - else
+        = link_to create_favorite_path(tweet), method: :POST do
+          = icon('far', 'heart')
+        = tweet.favorites.count
+    %hr
+    .content__user
+      - @users.each do |u|
+        - if tweet.user.id == u.id
+          - if u.image?
+            = image_tag u.image.url if u.image.present?
+          - else
+            .user_image
+              = image_tag "/assets/default.png", :size => '40x40'
       %a{:href => "/users/#{tweet.user.id}"}
         = tweet.user.nickname
+    .content__follow
+      - if current_user != tweet.user
+        - if tweet.user.followed_by?(current_user)
+          = link_to "フォロー中", user_relationships_path(tweet.user.id), method: :delete
+        - else
+          = link_to "フォロー", user_relationships_path(tweet.user.id), method: :post

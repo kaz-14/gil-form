@@ -1,0 +1,19 @@
+.group_content
+  .type-textbound
+    %span.textbound1 G
+    %span.textbound2 R
+    %span.textbound3 O
+    %span.textbound4 U
+    %span.textbound5 P
+  .client__name
+    - if user_signed_in?
+      %h3
+        Come on #{current_user.nickname}
+  .group__more
+    .more_list
+      %p <グループ一覧>
+    - current_user.groups.each do |group|
+      .group__user
+        = link_to group_group_tweets_path(group)do
+          .group__user__name
+            = group.name

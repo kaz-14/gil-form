@@ -1,0 +1,14 @@
+.group_outer
+  .Group__name
+    %p グループ名：
+    = @group.name
+  = link_to  "グループ投稿", new_group_group_tweet_path, class: "group_post"
+  .group__search
+    = form_with(url: search_group_group_tweets_path, local: true, method: :get, class: "group_search-form") do |form|
+      = form.text_field :keyword, placeholder: "投稿を検索する", class: "group_search-input"
+      = form.submit "検索", class: "sgroup_earch-btn"
+  .groups_content
+    .groups_content_row
+      - @group_tweets.each do |group_tweet|
+        - if @group.id == group_tweet.group.id
+          = render partial: "tweet", locals: { group__tweet: group_tweet }
