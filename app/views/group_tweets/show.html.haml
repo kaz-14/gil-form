@@ -5,7 +5,7 @@
         .more
           %ul.more_list
             %li
-              = link_to '編集', edit_group_group_tweet_path(@group_tweet.id), method: :get
+              = link_to '編集', edit_group_group_tweet_path(@group.id,@group_tweet.id), method: :get
             %li
               = link_to '削除', group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' }
     .content__description

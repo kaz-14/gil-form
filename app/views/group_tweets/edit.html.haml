@@ -1,6 +1,6 @@
 .group__contet
   .group__container
-    = form_with (model: [@group, @group_tweet], local: true) do |form|
+    = form_with(model: [@group, @group_tweet], local: true) do |form|
       %h3
         編集する
         = render partial: "form", locals: { form: form }

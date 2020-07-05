@@ -1,11 +1,14 @@
 class GroupTweetsController < ApplicationController
-  before_action :set_group, :only => [:index, :create, :show, :new, :confirm]
-  before_action :set_group_tweet, only: [:show, :destroy, :update]
+  before_action :set_group, :only => [:index, :create, :show, :new, :update, :search, :confirm]
+  before_action :set_group_tweet, only: [:show, :edit, :destroy, :update]
   before_action :set_edit_group, only: [:edit]
 
   def index
-    @group_tweets = @group.group_tweets.published.order("created_at DESC")
+    @group_tweets = @group.group_tweets.published.includes(:user).order("created_at DESC")
     @users =  User.all
+    if params[:tag_name]
+      @group_tweets = GroupTweet.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def new
@@ -47,21 +50,24 @@ class GroupTweetsController < ApplicationController
   end
 
   def edit
-    @group = Group.all
+    @group = Group.find(params[:group_id])
   end
 
   def update
     @group_tweet.update(group_tweet_params)
+    redirect_to group_group_tweet_path(@group,@group_tweet)
   end
 
   def search
-    @group_tweets = GroupTweet.search(params[:keyword])
+    @group_tweets = GroupTweet.published.group_search(params[:keyword])
     @users = User.all
+    @group = Group.find(params[:group_id])
   end
 
   def destroy
     @group_tweet.destroy
-    redirect_to root_path
+    @group = Group.find(params[:group_id])
+    redirect_to group_group_tweets_path(@group.id)
   end
 
   def confirm
@@ -77,7 +83,7 @@ class GroupTweetsController < ApplicationController
   private
 
   def group_tweet_params
-    params.require(:group_tweet).permit(:title, :image, :text, :status, :group_id).merge(user_id: current_user.id)
+    params.require(:group_tweet).permit(:title, :image, :text, :status, :tag_list, :group_id).merge(user_id: current_user.id)
   end
 
   def set_group_tweet

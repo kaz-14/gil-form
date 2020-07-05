@@ -7,6 +7,9 @@
     .content_image
       = link_to tweet_path(tweet.id) do
         = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
+  .content__tags
+    .content__tags__list
+      = render 'shared/tag_list', tag_list: tweet.tag_list
   .content__description
     .content__title
       .content__title__text

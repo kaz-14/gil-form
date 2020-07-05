@@ -5,6 +5,8 @@ class GroupTweet < ApplicationRecord
   has_many :likes
   has_many :opinions
   enum status: { draft: 0, published: 1 }
+
+  acts_as_taggable
   
   mount_uploader :image, ImageUploader
 

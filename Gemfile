@@ -61,9 +61,13 @@ gem 'font-awesome-sass'
 
 gem 'devise'
 
-gem 'jquery-rails'
-
 gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'enum_help'
+
+gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'jquery-rails'
+
+gem 'jquery-ui-rails'

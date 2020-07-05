@@ -3,6 +3,9 @@
   = label :image, class: 'form-image' do
     = form.file_field :image, placeholder: "画像" 
   = form.text_area :text, placeholder: "文章" , rows: "10"
+  = form.label :tag_list, 'タグ'
+  = form.text_field :tag_list, placeholder: "タグ" , value: @group_tweet.tag_list.join(','), id: 'tags'
+  %br
   %select#tweet_status{:name => "group_tweet[status]"}
     %option{:selected => "selected", :value => "draft"} 下書き
     %option{:value => "published"} 公開中

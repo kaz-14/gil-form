@@ -7,6 +7,8 @@
     .content_image
       = link_to group_group_tweet_path(@group,group__tweet) do
         = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
+  .content__tags
+    = render 'shared/tag_list', tag_list: group__tweet.tag_list
   .content__group__description
     .content__title
       .content__text

@@ -10,4 +10,5 @@
   .groups_content
     .groups_content_row
       - @group_tweets.each do |group_tweet|
-        = render partial: "tweet", locals: { group__tweet: group_tweet }
+        - if @group.id == group_tweet.group.id
+          = render partial: "tweet", locals: { group__tweet: group_tweet }

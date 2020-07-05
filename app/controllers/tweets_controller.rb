@@ -3,8 +3,11 @@ class TweetsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search]
 
   def index
-    @tweets = Tweet.published.order("created_at DESC")
+    @tweets = Tweet.published.includes(:user).order("created_at DESC")
     @users =  User.all
+    if params[:tag_name]
+      @tweets = Tweet.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def new
@@ -42,7 +45,7 @@ class TweetsController < ApplicationController
 
 
   def search
-    @tweets = Tweet.search(params[:keyword])
+    @tweets = Tweet.published.search(params[:keyword])
     @users = User.all
   end
 
@@ -57,7 +60,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:title, :image, :text, :status).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:title, :image, :text, :status, :tag_list).merge(user_id: current_user.id)
   end
 
   def set_tweet

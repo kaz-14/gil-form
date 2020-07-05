@@ -1,7 +1,8 @@
 class OpinionsController < ApplicationController
   def create
     opinion = Opinion.create(opinion_params)
-    redirect_to group_group_tweet_path(opinion.group_tweet.id)
+    @group = Group.find(params[:group_id])
+    redirect_to group_group_tweet_path(@group.id,opinion.group_tweet.id)
   end
 
   private

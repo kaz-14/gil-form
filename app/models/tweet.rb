@@ -5,6 +5,8 @@ class Tweet < ApplicationRecord
   has_many :favorites
   enum status: { draft: 0, published: 1 }
 
+  acts_as_taggable
+
   mount_uploader :image, ImageUploader
 
   def self.search(search)
