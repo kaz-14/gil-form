@@ -73,7 +73,7 @@ class GroupTweetsController < ApplicationController
   def confirm
     @group_tweets = @group.group_tweets.draft.order("created_at DESC")
     @users = User.all
-    @group = Group.all
+    @group = Group.find(params[:group_id])
   end
 
   def login_required

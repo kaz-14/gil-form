@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @users = User.all
     @user = User.find(params[:id])
     @nickname = @user.nickname
-    @tweets = @user.tweets
+    @tweets = @user.tweets.published.includes(:user).order("created_at DESC")
     @image = @user.image
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)

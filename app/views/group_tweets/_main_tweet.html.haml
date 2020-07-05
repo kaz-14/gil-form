@@ -3,6 +3,9 @@
     %p グループ名：
     = @group.name
   = link_to  "グループ投稿", new_group_group_tweet_path, class: "group_post"
+  .group_draft_list
+  = link_to confirm_group_group_tweets_path(@group) do
+    = icon('fas', 'drafting-compass')
   .group__search
     = form_with(url: search_group_group_tweets_path, local: true, method: :get, class: "group_search-form") do |form|
       = form.text_field :keyword, placeholder: "投稿を検索する", class: "group_search-input"

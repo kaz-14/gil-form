@@ -17,7 +17,7 @@ class LikesController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:id])
+    @group = Group.find_by(params[:group_id])
   end
   
 end
