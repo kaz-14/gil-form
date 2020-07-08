@@ -46,9 +46,9 @@
         = @tweet.text
     .container
       - if current_user
-        = form_with(model: [@tweet, @comment], html: { class: "container__form" }, local: true) do |form|
-          = form.text_area :text, placeholder: "コメントする", rows: "2"
-          = form.submit "SEND"
+        = form_with(model: [@tweet, @comment], html: { id: 'container_form' }, local: true) do |form|
+          = form.text_area :text, placeholder: "コメントする", rows: "2", class: "textbox"
+          = form.submit "SEND", class: "form__submit"
       - else
         %strong
           %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※

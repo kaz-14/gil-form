@@ -7,27 +7,47 @@
     .room__menber
       .room___menber__chat__header
         .room___menber__user__status
-          .room__user__name
+          .room__user__box
             - @entries.each do |e|
               - if current_user.id != e.user.id
-                %a{:href => "/users/#{e.user.id}"}
-                  = e.user.nickname
-                  さん
+                .user_image
+                  - if e.user.image?
+                    = image_tag e.user.image.url, :size => '40x40' if e.user.image.present?
+                  - else
+                    .user_image
+                      = image_tag "/assets/default.png", :size => '40x40'
+                .user__name
+                  %a{:href => "/users/#{e.user.id}"}
+                    = e.user.nickname
+                    さん
     .messege_list
       - if @messages.present?
         - @messages.each do |m|
           - if current_user.id == m.user.id
-            .messege_list__left
-              .messege_list__left__box
-                .messege_list__left__box__contet
+            .messege_list__right
+              .messege_list__right__box
+                .message-list__field__date
+                  = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                .messege_list__right__box__content
                   - if m.content.present?
                     %strong= m.content
                   = image_tag m.image.url, class: 'message-box__image' if m.image.present?
             .bms_clear
           - else
-            .messege_list__right
-              .messege_list__right__box
-                .messege_list__right_box__content
+            .messege_list__left
+              .messege_list__left__icon
+                - @entries.each do |e|
+                  - if current_user.id != e.user.id
+                    .user_image
+                      - if e.user.image?
+                        = image_tag e.user.image.url, :size => '40x40' if e.user.image.present?
+                      - else
+                        .user_image
+                          = image_tag "/assets/default.png", :size => '40x40'
+              .messege_list__left__box
+                .message-list__field__date
+                  = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                .messege_list__left__box__content
                   - if m.content.present?
                     %strong= m.content
                   = image_tag m.image.url, class: 'message-box__image' if m.image.present?
