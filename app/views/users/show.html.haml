@@ -12,7 +12,7 @@
           = fields_for @entry do |e|
             = e.hidden_field :user_id, :value=> @user.id
           = f.submit "チャットを始める"
-    = link_to "DMをする", users_path
+    = link_to "ユーザー一覧", users_path
   .follow_content
     .follow_content__following
       = link_to "フォロー", follows_user_path(@user.id)

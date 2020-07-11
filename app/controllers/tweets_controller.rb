@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
-    @tweet = Tweet.find_by(id: params[:id])
+    @tweet = Tweet.find(id: params[:id])
     if  @tweet.nil?
       redirect_to root_path
     elsif @tweet.draft?

@@ -1,0 +1,44 @@
+.header__show
+  %ul.header__menu
+    %li.header__single__menu
+      = icon('fas', 'bars') 
+      %p Menu
+      %ul.header__second__menu
+        %li
+          .header__menu__user
+            - if current_user.image?
+              .header__menu__user__image
+                = image_tag current_user.image.url, :size => '40x40'
+            - else
+              .header__menu__user__image
+                = image_tag "/assets/default.png", :size => '40x40'
+          .header__menu__user__info
+            %span
+              = current_user.nickname
+              %ul.user__info
+                %li
+                  = link_to "マイページ", "/users/#{current_user.id}"
+                  = link_to "ログアウト", destroy_user_session_path, method: :delete
+              .header__menu__user__info__edit
+              = link_to edit_user_path(current_user) do
+                = icon('fas', 'cog')
+        %li
+          .group__list
+            = link_to groups_path  do
+              = icon('fas', 'cog')
+              = "グループ一覧"
+        %li
+          .group-info__new
+            = link_to new_group_path do
+              = icon('fas', 'edit')
+              = "グループ作成"
+        %li
+          .draft_list
+            = link_to confirm_tweets_path do
+              = icon('fas', 'drafting-compass')
+              = "下書き一覧"
+        %li
+          .task_info
+            = link_to tasks_path do
+              = icon('fas', 'thumbtack')
+              = "タスク管理"

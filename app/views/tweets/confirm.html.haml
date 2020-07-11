@@ -1,8 +1,7 @@
-.sub_contents
-  = render partial: "side_form"
-.content 
-  .screan__text
-    %h4 下書き一覧
+.draft-content
+  .screan__content
+    .screan__text
+      %h1 下書き一覧
   .contents.row
     - @tweets.each do |tweet|
       - if current_user.id == tweet.user.id
