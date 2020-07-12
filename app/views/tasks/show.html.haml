@@ -1,12 +1,14 @@
-%h1 タスク一覧
-%table
-  %tr
-    %th Title
-    %td= @task.title
-  %tr
-    %th Description
-    %td= @task.description
-  %tr
-    %th User.Email
-    %td= @task.user.email
-%p= link_to '一覧に戻る', tasks_url
+.task__list
+  %h1 タスク一覧
+  %table
+    %tr
+      %th Title
+      %td= @task.title
+    %tr
+      %th Description
+      %td= @task.description
+    %tr
+      %th User.Email
+      %td= @task.user.email
+  .task__form__list__link
+    = link_to "タスクトップに戻る", tasks_path

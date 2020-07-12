@@ -1,11 +1,4 @@
-%h1 編集
-%div{:style => "width: 300px;"}
-  = form_for(@task) do |f|
-    %div
-      = f.label :title
-      = f.text_field :title, size: 50
-    %div
-      = f.label :description
-      = f.text_area :description
-    = f.submit 'Submit'
-%p= link_to '一覧に戻る', tasks_url
+.task__edit__content
+  %h1 編集
+  .task__form
+    = render partial: 'form', locals: { task: @task }

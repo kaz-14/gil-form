@@ -14,9 +14,12 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = current_user.tasks.new task_params
-    @task.save!
-    redirect_to @task
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to tasks_path
+    else
+      render 'new'
+    end
   end
   
   def edit
@@ -26,13 +29,13 @@ class TasksController < ApplicationController
   def update
     @task = target_task params[:id]
     @task.update(task_params)
-    redirect_to @task
+    redirect_to tasks_path
   end
   
   def destroy
     @task = target_task params[:id]
     @task.destroy
-    redirect_to tasks_url
+    redirect_to tasks_path
   end
   
   private
@@ -41,6 +44,6 @@ class TasksController < ApplicationController
   end
   
   def task_params
-    params.require(:task).permit(:title, :description)
+    params.require(:task).permit(:title, :description).merge(user_id: current_user.id)
   end
 end
