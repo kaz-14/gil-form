@@ -1,4 +1,4 @@
-.task__list{
+.task_content{
   background-image: url(/assets/task.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -9,8 +9,28 @@
   overflow: scroll;
   width: 100%;
   padding: 20px 0 0 150px;
+  position: relative;
+  flex-grow: 1;
 }
 
+.task__post__link{
+  min-height: 38px;
+  max-height: 38px;
+  display: flex;
+  justify-content: space-between;
+  a{
+    border-radius: 3px;
+    color: #5e6c84;
+    display: block;
+    flex: 1 0 auto;
+    margin: 2px 0 8px 8px;
+    padding: 4px 8px;
+    position: relative;
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
 
 .task__new__content{
   justify-content: center;
@@ -33,4 +53,80 @@
 
 .task__form{
   text-align: center;
+}
+
+.task__list{
+  width: 1000px;
+    display: flex;
+    margin-bottom: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    bottom: 0;
+    left: 180px;
+    &__box{
+      width: 320px;
+      margin: 0 4px;
+      height: 100%;
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: top;
+      &__box:first-child {
+        margin-left: 8px;
+    }
+  }
+}
+
+
+.task__table{
+  background-color: #ebecf0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+    &__header{
+      flex: 0 0 auto;
+      padding: 10px 8px;
+      min-height: 20px;
+      h2{
+        font-weight: 600;
+        margin: 0 0 8px;
+      }
+    }
+    &__main-list{
+      flex: 1 1 auto;
+      margin-bottom: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: 0 4px;
+      padding: 0 4px;
+      z-index: 1;
+      min-height: 0;
+    }
+    &__main-card{
+      background-color: #fff;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 rgba(9,30,66,.25);
+      cursor: pointer;
+      display: block;
+      margin-bottom: 8px;
+      max-width: 300px;
+      min-height: 50px;
+      text-decoration: none;
+      z-index: 0;
+      a{
+        border-radius: 3px;
+        color: #5e6c84;
+        margin: 2px 0 8px 8px;
+        padding: 4px 8px;
+        text-decoration: none;
+        user-select: none;
+      }
+    }
 }
