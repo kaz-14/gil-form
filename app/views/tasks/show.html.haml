@@ -1,14 +1,20 @@
-.task__list
-  %h1 タスク一覧
-  %table
-    %tr
-      %th Title
-      %td= @task.title
-    %tr
-      %th Description
-      %td= @task.description
-    %tr
-      %th User.Email
-      %td= @task.user.email
-  .task__form__list__link
-    = link_to "タスクトップに戻る", tasks_path
+.task__content
+  .task__back-description
+    .task__back-description__header
+      %h1 タスク詳細
+      .edit-btn
+        = link_to edit_task_path(@task) do
+          = icon('fas', 'cog')
+          ="編集"
+    .task__description
+      .task__description__content
+        .task__description__content__name
+          %th タスク名:
+          %td= @task.title
+        %tr
+        .task__description__content__main
+          %th 詳細:
+          %br
+          %td= @task.description
+    .task__link
+      = link_to "戻る", tasks_path

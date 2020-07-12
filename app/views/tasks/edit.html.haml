@@ -1,4 +1,5 @@
-.task__edit__content
-  %h1 編集
-  .task__form
-    = render partial: 'form', locals: { task: @task }
+.task__content
+  .task__content__edit
+    %h1 編集
+    .task__form
+      = render partial: 'form', locals: { task: @task }

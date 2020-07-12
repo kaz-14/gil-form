@@ -12,8 +12,12 @@
           = task.errors.messages[:description][0]
       = f.label :"詳細"
       = f.text_area :description, placeholder: '詳細を入力してください'
-    
+    .task__form__list__state
+      %select#task_state{:name => "task[state]"}
+        %option{:selected => "selected", :value => "todo"} TODO
+        %option{:value => "doing"} 実行中
+        %option{:value => "complete"} 完了
     .task__form__list__btn
       = f.submit 'SEND'
 .task__form__list__link
-  = link_to "タスクトップに戻る", tasks_path
+  = link_to "戻る", tasks_path
