@@ -3,6 +3,7 @@
     .user__mail
       .user__mail__info
         %h3 フォロー 一覧
+      .user__mail__list
         - if @users.present?
           - @users.each do |u|
             - if current_user.id != u.id
