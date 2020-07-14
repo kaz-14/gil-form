@@ -4,27 +4,26 @@
       .user__mail__info
         %h3 フォローワー 一覧
       .user__mail__list
-        - if @users.present?
+        - if @user.present?
           - @user.each do |u|
-            - if current_user.id != u.id
-              .user__mail__list__box
-                .user_image
-                  - if u.image?
-                    = image_tag u.image.url, :size => '40x40'
-                  - else
-                    .user_image
-                      = image_tag "/assets/default.png", :size => '40x40'
-                .user__name
-                  %p
-                    %a{:href => "/users/#{u.id}"}
-                      = u.nickname
-                      さん
-                .user__follow
-                  - if u.present?
-                    - if current_user != u
-                      - if u.followed_by?(current_user)
-                        %p= link_to "フォロー済み", user_relationships_path(u.id), method: :delete
-                      - else
-                        %p= link_to "フォローする", user_relationships_path(u.id), method: :post
+            .user__mail__list__box
+              .user_image
+                - if u.image?
+                  = image_tag u.image.url, :size => '40x40'
+                - else
+                  .user_image
+                    = image_tag "/assets/default.png", :size => '40x40'
+              .user__name
+                %p
+                  %a{:href => "/users/#{u.id}"}
+                    = u.nickname
+                    さん
+              - if u.present?
+                - if current_user != u
+                  .user__follow
+                    - if u.followed_by?(current_user)
+                      %p= link_to "フォロー済み", user_relationships_path(u.id), method: :delete
+                    - else
+                      %p= link_to "フォローする", user_relationships_path(u.id), method: :post
         - else
           %h3.user__follow まだフォローされていません

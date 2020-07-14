@@ -21,8 +21,8 @@
                   %a{:href => "/users/#{u.id}"}
                     = u.nickname
                     さん
-              .user__follow
-                - if current_user != @user
+              - if current_user != @user
+                .user__follow
                   - if u.followed_by?(current_user)
                     = link_to "フォロー中", user_relationships_path(u.id), method: :delete
                   - else

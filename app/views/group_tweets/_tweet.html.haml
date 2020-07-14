@@ -1,19 +1,19 @@
-.content_post
+.content__post
   - if @group.id == group__tweet.group_id
     - if group__tweet.image?
-      .content_image
+      .content__image
         = link_to group_group_tweet_path(@group,group__tweet) do
           = image_tag group__tweet.image.url, :size => '100x100', class: 'image__box'
     - else
-      .content_image
+      .content__image
         = link_to group_group_tweet_path(@group,group__tweet) do
           = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
     .content__tags
       = render 'shared/tag_group_list', tag_list: group__tweet.tag_list , group__tweet: group__tweet
     .content__group__description
       .content__title
-        .content__text
-        = group__tweet.title
+        .content__title__text
+          = group__tweet.title
       .content__favorite
         - if current_user.liked_by?(group__tweet.id)
           = link_to destroy_like_path(group__tweet), method: :DELETE do
@@ -27,15 +27,15 @@
       .content__user
         .user__image
         - if current_user.image?
-          .user_image
+          .user__image
             = image_tag current_user.image.url, :size => '40x40'
         - else
-          .user_image
+          .user__image
             = image_tag "/assets/default.png", :size => '40x40'
         %a{:href => "/users/#{group__tweet.user.id}"}
           = group__tweet.user.nickname
-      .content__follow
-        - if current_user != group__tweet.user
+      - if current_user != group__tweet.user
+        .content__follow
           - if group__tweet.user.followed_by?(current_user)
             = link_to "フォロー中", user_relationships_path(group__tweet.user.id), method: :delete
           - else

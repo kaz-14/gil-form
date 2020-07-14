@@ -1,48 +1,67 @@
-.contents.row
-  .content_post
-    .content_image{:style => "background-image: url(#{@group_tweet.image});"}
+.group__outer
+  .content__post
+    .content__image{:style => "background-image: url(#{@group_tweet.image});"}
       - if user_signed_in? && current_user.id == @group_tweet.user_id
         .more
-          %ul.more_list
+          %ul.more__list
             %li
               = link_to '編集', edit_group_group_tweet_path(@group.id,@group_tweet.id), method: :get
             %li
               = link_to '削除', group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' }
-    .content__description
+    .content__group__description
       .content__title
-        .content__text
+        .content__title__text
         = @group_tweet.title
-        -# .content__favorite
-        -# - if current_user.favorited_by?(@group_tweet.id)
-        -#   %td
-        -#   = link_to destroy_favorite_path(@group_tweet), method: :DELETE do
+      .content__favorite
+        -# - if current_user.liked_by?(@group_weet.id)
+        -#   = link_to destroy_like_path(group_tweet), method: :DELETE do
         -#     = icon('fas', 'heart')
-        -#   = @group_tweet.favorites.count
+        -#   = group_tweet.likes.count
         -# - else
-        -#   %td
-        -#   = link_to create_favorite_path(@tweet), method: :POST do
+        -#   = link_to create_like_path(group_tweet), method: :POST do
         -#     = icon('far', 'heart')
-        -#   = @group_tweet.favorites.count
-      .content__user--name
+        -#   = group_tweet.likes.count
+      %hr
+      .content__user
+        .user__image
+        - if current_user.image?
+          .user__image
+            = image_tag current_user.image.url, :size => '40x40'
+        - else
+          .user__image
+            = image_tag "/assets/default.png", :size => '40x40'
         %a{:href => "/users/#{@group_tweet.user.id}"}
           = @group_tweet.user.nickname
-    .content_text
+      - if current_user != @group_tweet.user
+        .content__follow
+          - if group_tweet.user.followed_by?(current_user)
+            = link_to "フォロー中", user_relationships_path(group_tweet.user.id), method: :delete
+          - else
+            = link_to "フォロー", user_relationships_path(group_tweet.user.id), method: :post
+    .content__text
+      %p [本文]
       = @group_tweet.text
-    .container
-      .container
-        - if current_user
-          = form_with(model: [@group, @group_tweet, @opinion], local: true) do |form|
-            = form.text_area :text, placeholder: "コメントする", rows: "2"
-            = form.submit "SEND"
-        - else
-          %strong
-            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-        .comments
-          %h4 ＜コメント一覧＞
-          - if @opinions
-            - @opinions.each do |opinion|
-              %p
-                %strong
-                  = link_to opinion.user.nickname, "/users/#{opinion.user_id}"
-                  ：
-                = opinion.text
+  .container
+    - if current_user
+      = form_with(model: [@group, @group_tweet, @opinion], local: true) do |form|
+        = form.text_area :text, placeholder: "コメントする", rows: "2"
+        = form.submit "SEND"
+    - else
+      %strong
+        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+    .comments
+      %h4 ＜コメント一覧＞
+      - if @opinions
+        - @opinions.each do |opinion|
+          .comments__box
+            .user__image
+              - @users.each do |u|
+                - if opinion.user.id == u.id
+                  - if u.image?
+                    = image_tag u.image.url if u.image.present?
+                  - else
+                    .user__image
+                      = image_tag "/assets/default.png", :size => '40x40'
+            = link_to opinion.user.nickname, "/users/#{opinion.user_id}"
+            ：
+            = opinion.text
