@@ -1,0 +1,175 @@
+.log-in__menu{
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+
+$font-family:   "Roboto";
+$font-size:     14px;
+
+$color-primary: #ABA194;
+
+
+.log-in__content {
+    font-family: $font-family;
+    font-size: $font-size;
+    animation: move 10s ease infinite;
+    transform: translate3d(0, 0, 0);
+    background: linear-gradient(45deg, #d5f3e7 10%, #A2C7E5 90%);
+    height: 1000px;
+    overflow: scroll;
+}
+
+.log-in__list {
+    width: 90%;
+    max-width: 340px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.log-in__list__header {
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.7s forwards;
+}
+
+.log-in__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4f6fad;
+}
+
+.log-in__form {
+    margin-top: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.9s forwards;
+}
+
+.form--no {
+    animation: NO 1s ease-in-out;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.log-in__form__input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    
+    &:focus {
+        background: darken(#fff, 3%);
+    }
+}
+
+.log-form__group__image{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-family: $font-family;
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  transition: 0.3s;
+  background: darken(#fff, 3%);
+}
+
+.log-form__select{
+  color: #4f6fad;
+  font-weight: bold;
+}
+
+.log-form__group{
+  color: #4f6fad;
+  text-align: left;
+  label{
+    font-weight: bold;
+    color: #4f6fad;
+  }
+}
+
+.log-in__form__remember{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-family: $font-family;
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  transition: 0.3s;
+  color: #4f6fad;
+  
+  &:focus {
+      background: darken(#fff, 3%);
+  }
+}
+
+.log-in__form-btn {
+    font-weight: bold;
+    margin: 10px auto;
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: white;
+    background: $color-primary;
+    transition: 0.3s;
+    
+    &:hover {
+        background: darken($color-primary, 5%);
+    }
+}
+
+@keyframes NO {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes arrive {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0
+    }
+
+    50% {
+        background-position: 100% 0
+    }
+
+    100% {
+        background-position: 0 0
+    }
+}

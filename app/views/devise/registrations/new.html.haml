@@ -1,31 +1,31 @@
-.contents.row
-  .container
-    %h2 Sign up
-    = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
-      = devise_error_messages!
-      .field
-        = f.label :nickname
-        %em (6 characters maximum)
-        %br/
-        = f.text_field :nickname, autofocus: true, maxlength: "6"
-      .field
-        = f.label :email
-        %br/
-        = f.email_field :email
-      .field
-        = f.label :user_image
-        = f.file_field :image
-      .field
-        = f.label :password
-        - if @validatable
-          %em
-            (#{@minimum_password_length} characters minimum)
-        %br/
-        = f.password_field :password, autocomplete: "off"
-      .field
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "off"
-      .actions
-        = f.submit "Sign up"
-
+.log-in__content
+  .log-in__list
+    .log-in__list__header
+      %img{:alt => "", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg"}/
+      %h1.log-in__title  新規登録
+    .log-in__form
+      = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+        = devise_error_messages!
+        .log-form__group
+          = f.label :nickname
+          %em (6 characters maximum)
+          = f.text_field :nickname, autofocus: true, maxlength: "6",placeholder: "名前", class: "log-in__form__input"
+        .log-form__group
+          = f.label :email
+          = f.email_field :email,placeholder: "メールアドレス", class: "log-in__form__input"
+        .log-form__group
+          = f.label :user_image
+          .log-form__group__image
+            = f.file_field :image,placeholder: "画像", class: "log-in__form__input"
+        .log-form__group
+          = f.label :password
+          - if @validatable
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "off",placeholder: "パスワード", class: "log-in__form__input"
+        .log-form__group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, autocomplete: "off",placeholder: "パスワード再入力", class: "log-in__form__input"
+        .log-in__form-btn-1
+          = f.submit "Sign up", class: "log-in__form-btn"

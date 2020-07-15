@@ -1,23 +1,6 @@
 body{
-  background-image: url(/assets/background.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
   background-color: #464646;
-  z-index: 0;
 }
-// body::before {
-//   content: '';
-//   position: absolute;
-//   top: -5px;
-//   bottom: -5px;
-//   left: -5px;
-//   right: -5px;
-//   background: inherit;
-//   filter: blur(2px);
-//   z-index: -1;
-// }
 
 .header{
   position: fixed;
@@ -33,6 +16,7 @@ body{
     text-align: center;
     display: block;
     height: 100px;
+    position: relative;
   }
   &__side_bar{
     justify-content: center;
@@ -50,7 +34,7 @@ body{
   &__bar{
     display: flex;
     height: 70px;
-    width: 220px;
+    width: 300px;
     position: absolute;
     right: 15px;
     top: 20px;
@@ -94,7 +78,6 @@ body{
                   0px 5px 0px #555;
     display: block;
     color: #ccd4de;
-    font-size: 11px;
     margin-top: 0;
     margin-bottom: -2px;
     white-space: nowrap;
@@ -106,13 +89,14 @@ body{
     margin-left: 15px;
     width: 70px;
     height: 50px;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     position: relative;
+    z-index: 2;
     a{
       text-decoration: none;
-      color: #000000;
-      font-size: 12px;
+      color: #000;
+      font-size: 14px;
       font-weight: bold;
     }
   }
@@ -132,15 +116,15 @@ body{
     background-color: #f0f0f0;
     display: none;
     position: absolute;
-    top: 50px;
-    right: 0;
     padding: 15px 30px;
     border-bottom: 1px solid #d8d8d8;
   }
 }
 
 .user-info__edit{
-  margin-left: 20px;
+  position: absolute;
+  top: 0;
+  right: 15px;
   i{
     padding-top: 23px;
     border: 60px;

@@ -5,34 +5,46 @@
       %ul
         - group.errors.full_messages.each do |message|
           %li= message
-  .SettingGroup__form__field
-    .SettingGroup__form__leftField
-      = f.label :name, "グループ名", class: 'SettingGroup__form__label'
-    .SettingGroupForm__rightField
-      = f.text_field :name, class: 'SettingGroup__form__input', placeholder: 'グループ名を入力してください'
-  .SettingGroup__form__field
-    .SettingGroup__form__leftField
-      %label.SettingGroup__form__label チャットメンバーを追加
-    .SettingGroup__form__rightField
-      .UserSearch
-        %input#UserSearch__field.SettingGroup__form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}/
-      #UserSearchResult
-  .SettingGroup__form__field
-    .SettingGroup__form__leftField
-      = f.label :name, value: "チャットメンバー", class: "SettingGroup__form__label"
-    .SettingGroup__form__rightField
-      .ChatMembers
-        .ChatMember
-          %p.ChatMember__name= current_user.nickname
-          %input{name: "group[user_ids][]", type: "hidden", value: current_user.id}
-        - group.users.each do |user|
-          - if current_user.nickname != user.nickname
-            .ChatMember
-              %p.ChatMember__name 
-                = user.nickname
-              .ChatMember__remove.ChatMember__button{"data-user-id": user.id, "data-user-name": user.nickname} 削除
-              %input{name: "group[user_ids][]", type:"hidden", value: user.id}
-  .SettingGroup__form__field
-    .SettingGroup__form__leftField
-    .SettingGroup__form__rightField
-      = f.submit class: 'SettingGroupForm__button'
+  .SettingGroup__form__all
+    %ul
+      %li
+        .SettingGroup__form__field
+          .SettingGroup__form__field__flex
+            .SettingGroup__form__leftField
+              = f.label :name, "グループ名", class: 'SettingGroup__form__label'
+              %span.req *
+          .SettingGroupForm__rightField
+            = f.text_field :name, class: 'SettingGroup__form__input', placeholder: 'グループ名を入力してください'
+      %li
+        .SettingGroup__form__field
+          .SettingGroup__form__field__flex
+            .SettingGroup__form__leftField
+              %label.SettingGroup__form__label メンバーを追加
+              %span.req *
+          .SettingGroup__form__rightField
+            .UserSearch
+              %input#UserSearch__field.SettingGroup__form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}/
+            #UserSearchResult
+      %li
+        .divider
+      %li
+        .SettingGroup__form__field
+          .SettingGroup__form__leftField
+            = f.label :name, value: " グループメンバー", class: "SettingGroup__form__label"
+          .SettingGroup__form__rightField
+            .ChatMembers
+              .ChatMember
+                %p.ChatMember__name= current_user.nickname
+                %input{name: "group[user_ids][]", type: "hidden", value: current_user.id}
+              - group.users.each do |user|
+                - if current_user.nickname != user.nickname
+                  .ChatMember
+                    %p.ChatMember__name 
+                      = user.nickname
+                    .ChatMember__remove.ChatMember__button{"data-user-id": user.id, "data-user-name": user.nickname} 削除
+                    %input{name: "group[user_ids][]", type:"hidden", value: user.id}
+      %li
+        .SettingGroup__form__field
+          .SettingGroup__form__leftField
+          .SettingGroup__form__rightField
+            = f.submit class: 'SettingGroupForm__button'

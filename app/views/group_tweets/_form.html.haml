@@ -9,4 +9,4 @@
   %select#tweet_status{:name => "group_tweet[status]"}
     %option{:selected => "selected", :value => "draft"} 下書き
     %option{:value => "published"} 公開中
-  = form.submit "SEND"
+  = form.submit "SEND", class: 'tweet__form__btn'

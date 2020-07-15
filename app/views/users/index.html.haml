@@ -1,5 +1,5 @@
 .direct__mail
-  .user__contents
+  .user__all
     .user__mail
       .user__mail__info
         %h3 ユーザー一覧
@@ -8,7 +8,7 @@
             ようこそ #{current_user.nickname} さん
       .user__mail__list
         - @users.each do |u|
-          - if current_user.id != @users.ids
+          - if current_user.id != u.id
             .user__mail__list__box
               .user_image
                 - if u.image?

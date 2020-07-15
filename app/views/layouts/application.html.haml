@@ -37,10 +37,11 @@
     = yield
   - else
     .header__logo
-      .grid-6
-        %a{:href => "/"} GIL
-    .grid-6
-      = link_to "ログイン", new_user_session_path, class: 'post'
-      = link_to "新規登録", new_user_registration_path, class: 'post'
+      .ligo_image
+        = link_to root_path do
+          = image_tag "/assets/GIL-logo-black.png", :size => '50x50', class: 'image__log'
+      .log-in__menu
+        = link_to "ログイン", new_user_session_path, class: 'post'
+        = link_to "新規登録", new_user_registration_path, class: 'post'
     = yield
 

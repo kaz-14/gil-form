@@ -4,10 +4,8 @@
     = form.file_field :image, placeholder: "画像" 
   = form.text_area :text, placeholder: "文章" , rows: "10"
   = form.label :tag_list, 'タグ'
-  %br
   = form.text_field :tag_list, value: @tweet.tag_list.join(','), id: 'tags'
   %br
-  -# = form.select :status, Tweet.statuses.keys.map { |k| [t("enums.tweet.status.#{k}"),k]}
   %select#tweet_status{:name => "tweet[status]"}
     %option{:selected => "selected", :value => "draft"} 下書き
     %option{:value => "published"} 公開中

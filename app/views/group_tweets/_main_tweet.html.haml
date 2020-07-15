@@ -11,10 +11,10 @@
     .group__search
       = form_with(url: search_group_group_tweets_path, local: true, method: :get, class: "group_search-form") do |form|
         = form.text_field :keyword, placeholder: "投稿を検索する", class: "group__search-input"
-        = form.submit "検索", class: "group__search-btn"
-    .groups__content
-      .groups__content_row
-        - @group_tweets.each do |group_tweet|
-          = render partial: "tweet", locals: { group__tweet: group_tweet }
+        = form.submit "検索", class: "group__search-btn",:alt => "Button"
+  .groups__content
+    .groups__content_row
+      - @group_tweets.each do |group_tweet|
+        = render partial: "tweet", locals: { group__tweet: group_tweet }
 
 

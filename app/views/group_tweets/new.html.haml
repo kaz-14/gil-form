@@ -1,6 +1,6 @@
-.group__contet
-  .group__container
+.post-form__group
+  .postainer
     = form_with(model: [@group, @group_tweet], local: true) do |form|
       %h3
-        投稿する
+        グループ投稿する
       = render partial: "form", locals: { form: form }

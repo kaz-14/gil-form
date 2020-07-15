@@ -26,7 +26,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   text-align: center;
-  height: calc(100vh - 120px);
+  height: 100vh;
   overflow: scroll;
   padding-left: 150px;
 
@@ -323,6 +323,7 @@ hr{
 }
 
 //コメント
+
 .container{
   margin-top: 30px;
   width: 500px;
@@ -341,20 +342,20 @@ hr{
   textarea {
     width: 300px;
     margin: 5px 0 15px;
-    padding: 10px;
+    padding: 20px 10px;
     border-radius: 5px;
     font-family: "游ゴシック", "YuGothic";
   }
   input[type="submit"] {
     height: 45px;
     display: inline-block;
-    margin: 27px 0 0 10px;
+    margin: -10px 0 0 10px;
     padding: 0.5em 1em;
     text-decoration: none;
     background: #668ad8;
     color: #FFF;
     border-radius: 4px;
-    box-shadow: 0px 0px 0px 5px #668ad8;
+    box-shadow: 0px 0px 0px 3px #668ad8;
     border: dashed 1px #FFF;
   }
   form input[type="submit"]:hover {
@@ -399,6 +400,8 @@ hr{
   flex-direction: column;
 }
 
+
+
 //下書き
 .draft-content{
   background-color: #68595938;
@@ -419,11 +422,11 @@ hr{
   margin:0 22px 0 10px;
   padding:14px 15px 0px 20px;
   font:bold 28px/1.3 Comic Sans MS;
-  color:rgba(221, 125, 34, 0.801);
-  background:#ffc;
+  color:#f9fcfb;
+  background:#364f6b;
   box-shadow:
-      12px 0 0 0 #ffc,
-      0 12px 0 0 #ffc,
+      12px 0 0 0 #364f6b,
+      0 12px 0 0 #364f6b,
       1px 15px 4px -3px rgba(0,0,0,0.2);
 }
 
@@ -437,7 +440,7 @@ hr{
   border-width:12px 12px 0 0;
   border-style:solid;
   border-color:transparent;
-  border-top-color:#cc9;
+  border-top-color:rgb(153, 167, 204);
 }
 
 .screen__text:after{
@@ -447,12 +450,27 @@ hr{
   bottom:0;
   left:10px;
   width:110px;
-  height:20px;
-  background:rgba(255,182,182,0.4);
+  height:17px;
+  background:#21bf7393;
   -webkit-transform: rotate(-1deg);
   -moz-transform: rotate(-1deg);
   -o-transform: rotate(-1deg);
   transform: rotate(-1deg);
+}
+
+
+//投稿フォーム
+.post-form__new{
+  background-image: url(/assets/desk1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-size: cover;
+  background-color:rgba(255, 255, 255, 0.295);
+  background-blend-mode:lighten;
+  height: 100vh;
+  overflow: scroll;
+  width: 100%;
 }
 
 //@投稿ボタン
