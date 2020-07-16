@@ -1,25 +1,60 @@
-.task_content
-  .sub_contents
-    = render partial: "side_form"
+.task__content
   .task__list
-    .type-textbound
-      %span.textbound1 T
-      %span.textbound2 A
-      %span.textbound3 S
-      %span.textbound4 K
-    .task__table
-      %table
-        %tr
-          %th Title
-          %th Description
-          %th
-          %th
-          %th
-        - @tasks.each do |task|
-          %tr
-            %td= task.title
-            %td= task.description
-            %td= link_to 'Show', task_path(task)
-            %td= link_to 'Edit', edit_task_path(task)
-            %td= link_to 'Delete', task_path(task), method: :delete
-      %p= link_to 'ToDoの作成', new_task_path
+    .task__list__box
+      .task__table
+        .task__table__header
+          %h2 TODO
+        .task__table__main-list
+          - @tasks.each do |task|
+            - if task.state == "todo"
+              .task__table__main-card
+                .tesk__text
+                = link_to task_path(task) do
+                  = task.title
+                .edit-delete-btn
+                  = link_to edit_task_path(task) do
+                    = icon('fas', 'cog')
+                    ="編集"
+                  = link_to task_path(task), method: :delete do
+                    = icon('fas', 'cog')
+                    ="削除"
+          .task__post__link
+            = link_to new_task_path do
+              = icon('fas', 'fa-plus')
+              = "タスクの追加"
+    .task__list__box
+      .task__table
+        .task__table__header
+          %h2 Doing
+        .task__table__main-list
+          - @tasks.each do |task|
+            - if task.state == "doing"
+              .task__table__main-card
+                .tesk__text
+                = link_to task_path(task) do
+                  = task.title
+                .edit-delete-btn
+                  = link_to edit_task_path(task) do
+                    = icon('fas', 'cog')
+                    ="編集"
+                  = link_to task_path(task), method: :delete do
+                    = icon('fas', 'cog')
+                    ="削除"
+    .task__list__box
+      .task__table
+        .task__table__header
+          %h2 Complete
+        .task__table__main-list
+          - @tasks.each do |task|
+            - if task.state == "complete"
+              .task__table__main-card
+                .tesk__text
+                = link_to task_path(task) do
+                  = task.title
+                .edit-delete-btn
+                  = link_to edit_task_path(task) do
+                    = icon('fas', 'cog')
+                    ="編集"
+                  = link_to task_path(task), method: :delete do
+                    = icon('fas', 'cog')
+                    ="削除"

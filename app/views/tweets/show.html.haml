@@ -1,16 +1,17 @@
 .content
-  .sub_contents
-  = render partial: "side_form"
   .contents.row
-    .content_post
-      .content_image{:style => "background-image: url(#{@tweet.image});"}
+    .content__post
+      .content__image{:style => "background-image: url(#{@tweet.image});"}
         - if user_signed_in? && current_user.id == @tweet.user_id
           .more
-            %ul.more_list
+            %ul.more__list
               %li
                 = link_to '編集', edit_tweet_path(@tweet.id), method: :get
               %li
                 = link_to '削除', tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' }
+      .content__tags
+        .content__tags__list
+          = render 'shared/tag_list', tag_list: @tweet.tag_list
       .content__description
         .content__title
           .content__title__text
@@ -31,24 +32,24 @@
               - if u.image?
                 = image_tag u.image.url if u.image.present?
               - else
-                .user_image
+                .user__image
                   = image_tag "/assets/default.png", :size => '40x40'
           %a{:href => "/users/#{@tweet.user.id}"}
             = @tweet.user.nickname
-        .content__follow
-          - if current_user != @tweet.user
+        - if current_user != @tweet.user
+          .content__follow
             - if @tweet.user.followed_by?(current_user)
               = link_to "フォロー中", user_relationships_path(@tweet.user.id), method: :delete
             - else
               = link_to "フォロー", user_relationships_path(@tweet.user.id), method: :post
-      .content_text
+      .content__text
         %p [本文]
         = @tweet.text
     .container
       - if current_user
-        = form_with(model: [@tweet, @comment], html: { class: "container__form" }, local: true) do |form|
-          = form.text_area :text, placeholder: "コメントする", rows: "2"
-          = form.submit "SEND"
+        = form_with(model: [@tweet, @comment], html: { id: 'container_form' }, local: true) do |form|
+          = form.text_area :text, placeholder: "コメントする", rows: "2", class: "textbox"
+          = form.submit "SEND", class: "form__submit"
       - else
         %strong
           %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
@@ -57,13 +58,13 @@
         - if @comments
           - @comments.each do |comment|
             .comments__box
-              .user_image
+              .user__image
                 - @users.each do |u|
                   - if comment.user.id == u.id
                     - if u.image?
                       = image_tag u.image.url if u.image.present?
                     - else
-                      .user_image
+                      .user__image
                         = image_tag "/assets/default.png", :size => '40x40'
               = link_to comment.user.nickname, "/users/#{comment.user_id}"
               ：

@@ -1,0 +1,23 @@
+.task__form__list
+  = form_with model: task, local: true do |f|
+    .task__form__list__title
+      - if task.errors.any?
+        .task__form__list__errors
+          = task.errors.messages[:title][0]
+      = f.label :"タスク名"
+      = f.text_field :title, placeholder: 'タスク名を入力してください'
+    .task__form__list__description
+      - if task.errors.any?
+        .task__form__list__errors
+          = task.errors.messages[:description][0]
+      = f.label :"詳細"
+      = f.text_area :description, placeholder: '詳細を入力してください'
+    .task__form__list__state
+      %select#task_state{:name => "task[state]"}
+        %option{:selected => "selected", :value => "todo"} TODO
+        %option{:value => "doing"} 実行中
+        %option{:value => "complete"} 完了
+    .task__form__list__btn
+      = f.submit 'SEND'
+.task__form__list__link
+  = link_to "戻る", tasks_path

@@ -1,0 +1,7 @@
+ja:
+  enums:
+    task:
+      state:
+        todo: 'TODO'
+        doing: '実行中'
+        complete: '完了'

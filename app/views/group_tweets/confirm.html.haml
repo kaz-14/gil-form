@@ -1,8 +1,8 @@
-.sub_contents
-  = render partial: "side_form"
-.content 
-  .screan__text
-    %h4 下書き一覧
+.group__outer
+  .screen__content
+    .group__screen__text
+      %h4 下書き一覧
   .contents.row
     - @group_tweets.each do |group_tweet|
-      = render partial: "tweet", locals: { group__tweet: group_tweet }
+      - if current_user.id == group_tweet.user.id
+        = render partial: "tweet", locals: { group__tweet: group_tweet }

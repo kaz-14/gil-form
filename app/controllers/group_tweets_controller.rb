@@ -21,7 +21,7 @@ class GroupTweetsController < ApplicationController
     if @group_tweet.save
       redirect_to group_group_tweets_path(@group)
     else
-      @group_tweets = @group.group_tweet.includes(:user)
+      @group_tweets = @group.group_tweets.includes(:user)
       # flash.now[:alert] = 'メッセージを入力してください。'
       render :index
     end
@@ -73,7 +73,7 @@ class GroupTweetsController < ApplicationController
   def confirm
     @group_tweets = @group.group_tweets.draft.order("created_at DESC")
     @users = User.all
-    @group = Group.all
+    @group = Group.find(params[:group_id])
   end
 
   def login_required

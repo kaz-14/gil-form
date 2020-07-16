@@ -1,15 +1,14 @@
-.content__mypage{
-  text-align: center;
-  background-color: #eeeeee;
-  height: calc(100vh - 85px);
+//マイページ
+.content__user-page{
   overflow: scroll;
-  &__name{
-    background-color:rgb(231, 169, 255);
-    margin: 10px 0 0 0;
-    text-shadow: 1px 1px 2px #ffffff, 0 0 1px #ffffff, 0 0 1px #ffffff;
-    font-size: 20px;
-    box-shadow: 1px 1px 2px rgba(41, 41, 41, 41);
-  }
+  text-align: center;
+  background-color: #eeeeee93;
+  height: 100vh;
+  background-image: url(/assets/my９.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode:lighten;
+  background-position: top;
   &__list{
     display: flex;
     flex-wrap: wrap;
@@ -17,26 +16,371 @@
   }
 }
 
-.content__mypage::-webkit-scrollbar{
+.content__user-page::-webkit-scrollbar{
   display: none;
 }
 
-.direct__mail{
-  height: calc(100vh - 120px);
+//マイページ上部
+.content__user-table{
+    &__header {
+        border-bottom: 1px solid rgb(40, 40, 40);
+        position: relative;
+        background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/7022/spotify_img_bground.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      &__info {
+          padding: 15px;
+          z-index: 1;
+          margin-top: 10px * 1.3;
+          display: flex;
+          flex-flow: row wrap;
+          align-items: flex-end;
+          justify-content: center;
+          }
+        }
+        
+.profile__img {
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 0px #999, 
+                0px 2px 0px #888,
+                0px 3px 0px #777, 
+                0px 4px 0px #666, 
+                0px 5px 0px #555, 
+                0px 6px 0px #444;
+  }
+}
+.content__user__name{
+  color: white;
+  font-size: 30px;
+  font-weight: 100;
+  padding: 0 0 10px;
+  text-shadow: 10px 10px 10px rgba(41, 41, 41, 41);
+}
+
+.detail__content{
+  height: 140px;
+  margin-left: 30px;
+  &__name{
+    display: flex;
+  }
+  .edit-btn{
+    margin-left: 50px;
+    font-size: 20px;
+    i{
+      text-decoration: none;
+      color: white;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+  }
+  &-btn{
+    display: flex;
+  }
+  input[type="submit"]{
+    background: rgb(30, 215, 96);
+    color: white;
+    border: none;
+    &:hover {
+      background: lighten( rgb(30, 215, 96), 10% );
+    }
+  }
+}
+
+.follow__content{
+  display: flex;
+  margin-top: 5px;
+}
+
+button {
+  border-radius: 20px;
+  border: none;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  outline: none;
+  margin: 5px 0 0 10px;
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-dark {
+  background: rgb(30, 215, 96);
+  color: white;
+  border: 1px solid rgb(30, 215, 96);
+  box-shadow: 10px 10px 10px rgba(41, 41, 41, 41);
+  &:hover {
+    background: lighten( rgb(30, 215, 96), 10% );
+  }
+}
+
+.button-light {
+  background: none;
+  color: rgb(200, 200, 200);
+  border: 1px solid rgb(200, 200, 200);
+  box-shadow: 10px 10px 10px rgba(41, 41, 41, 41);
+  &:hover {
+    border-color: white;
+    color: white;
+  }
+}
+
+//マイページ下部
+.content__my-page__name {
+  background-color:rgba(30, 215, 95, 0.541);
+  margin: 10px 0 0 0;
+  text-shadow: 1px 1px 2px #ffffff, 0 0 1px #ffffff, 0 0 1px #ffffff;
+  font-size: 20px;
+  box-shadow: 1px 1px 2px rgba(41, 41, 41, 41);
+  width: 1000px;
+  margin: auto;
+}
+.content__my-list {
+  padding: 0;
+  margin: 0 auto;
+  width: 1000px;
+  background: #dce0e0;
+}
+ul.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+}
+ul.menu li {
+  display: inline-block;
+}
+ul.menu li .menu_item {
+  display: inline-block;
+  font-size: 14px;
+  width: 186px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  padding: 7px;
+  color: #333;
+}
+ul.menu li .active {
+  background: #353d3e;
+  color: #fff;
+}
+ul.menu li :not(.active):hover {
+  opacity: 0.5;
+  transition: .8s;
+}
+ul.post__list li {
   overflow: scroll;
-  margin-left: 150px;
-  width: 100%;
+  height: 57vh;
+  list-style: none;
+  font-size: 14px;
+  padding: 7px 10px;
+  line-height: 1.4;
+  min-height: 150px;
+  display: none;
+}
+ul.post__list li.show {
+  display: block;
 }
 
 
-.user__mail{
-  background-image: url(/assets/DM.jpg);
+//フォロー画面
+.text-center{
+  h3{
+    color: #ffffff;
+  }
+}
+
+//ユーザー一覧画面
+.direct__mail{
+  z-index:0;
+  overflow: hidden;
+  background: url(/assets/DM.jpg) no-repeat center;
+  position: relative;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  height: 100%;
+  width: 100%;
+  padding: 10px;
+  overflow: scroll;
+  height: 100vh;
+}
+
+.direct__mail::before{
+  content: '';
+  background: inherit;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+}
+
+.user__all{
+  height: 140vh;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.user__mail__list::-webkit-scrollbar{
+  display: none;
+}
+
+.user__mail{
+  background-color: #002055;
+  box-shadow: 0 0px 20px rgba(0,0,0,0.2);
+  padding-top: 10px;
   &__info{
-    padding: 30px 0 0 30px;
+    position:relative;
+    padding:5px 20px;
+    font:bold 28px/1.6 Arial, Helvetica, sans-serif;
+    color:#333;
+    background:#fff;
+    text-shadow:
+        1px 1px 0 #fff,
+        2px 2px 0 #999;
+    border-top:#333 solid 3px;
+    border-bottom:#333 solid 3px;
+    background-image: -webkit-gradient(linear, left top, right bottom,
+            from(           rgba(255, 255, 255, 0.0)),
+            color-stop(0.4, rgba(255, 255, 255, 0.0)),
+            color-stop(0.4, rgba(0, 0, 0, 0.1)),
+            color-stop(0.6, rgba(0, 0, 0, 0.1)),
+            color-stop(0.6, rgba(255, 255, 255, 0.0)),
+            to(             rgba(255, 255, 255, 0.0))
+            );
+    background-image: -webkit-linear-gradient(top -45deg,
+            transparent 40%,
+
+            rgba(0, 0, 0, 0.1) 40%,
+            rgba(0, 0, 0, 0.1) 60%,
+
+            transparent 60%
+            );
+    background-image: -moz-linear-gradient(top -45deg,
+            transparent 40%,
+            rgba(0, 0, 0, 0.1) 40%,
+            rgba(0, 0, 0, 0.1) 60%,
+            transparent 60%
+            );
+    background-image: -o-linear-gradient(top -45deg,
+            transparent 40%,
+            rgba(0, 0, 0, 0.1) 40%,
+            rgba(0, 0, 0, 0.1) 60%,
+            transparent 60%
+            );
+    background-image: linear-gradient(to bottom -45deg,
+            transparent 40%,
+            rgba(0, 0, 0, 0.1) 40%,
+            rgba(0, 0, 0, 0.1) 60%,
+            transparent 60%
+            );
+    background-size:4px 4px;
+}
+}
+.user__mail__info:before{
+  content:" ";
+  position:absolute;
+  top:100%;
+  left:24px;
+  width:0;
+  height:0;
+  border-width:12px;
+  border-style:solid;
+  border-color:transparent;
+  border-top-color:#333;
+
+}
+.user__mail__info:after{
+  content:" ";
+  position:absolute;
+  top:100%;
+  left:28px;
+  width:0;
+  height:0;
+  border-width:8px;
+  border-style:solid;
+  border-color:transparent;
+  border-top-color:#f0f0f0;
+  z-index:1;
+}
+
+.user__mail__list{
+  height: 100vh;
+  overflow: scroll;
+  margin-top: 20px;
+  padding:0 0 20px 30px;
+  &__box{
+    background-color: #D9E5FF; 
+    height: 70px; 
+    color: #134F9A; 
+    display: flex;
+    align-items: center;
+    margin: 0 30px 10px 0;
+    padding-left: 10px;
+    .user_image{
+      img{
+        margin-right: 10px;
+        width:  45px; 
+        height: 45px;
+        border-radius: 60%; 
+        border: 1px solid rgb(190, 190, 190);
+      }
+    }
+    .user__name{
+      padding: 10px 30px 10px 10px ;
+      letter-spacing: 0;
+      text-shadow: 0px 1px 0px #999, 
+                  0px 2px 0px #888;
+                  // 0px 3px 0px #777, 
+                  // 0px 4px 0px #666, 
+                  // 0px 5px 0px #555, 
+                  // 0px 6px 0px #444, 
+                  // 0px 7px 0px #333, 
+                  // 0px 8px 7px #001135;
+      font-size: 23px;
+    }
+      a{
+        text-decoration: none;
+        color: #134F9A;
+      }
+    }
+    .user__follow{
+      display: inline-block;
+      height: 20px;
+      padding: 0.5em 1em;
+      background: #f7f7f7;
+      border-left: solid 6px #ff7c5c;
+      color: #ff7c5c;
+      font-weight: bold;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+      a{
+        text-decoration: none;
+        color: #000000;
+    }
   }
 }

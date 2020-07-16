@@ -1,3 +1,7 @@
-.SettingGroup
-%h1 新規グループ
-= render partial: 'form', locals: { group: @group }
+.group__add-form
+  .group__add-form__height
+    .SettingGroup
+      .SettingGroup__title
+        %h1 NEW GROUP ADD
+      .SettingGroup__form
+        = render partial: 'form', locals: { group: @group }

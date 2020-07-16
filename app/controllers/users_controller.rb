@@ -3,13 +3,19 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    return nil if params[:keyword] == ""
+    @users = User.where(['nickname LIKE ?', "%#{params[:keyword]}%"] ).where.not(id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show
     @users = User.all
     @user = User.find(params[:id])
     @nickname = @user.nickname
-    @tweets = @user.tweets
+    @tweets = @user.tweets.published.includes(:user).order("created_at DESC")
     @image = @user.image
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)

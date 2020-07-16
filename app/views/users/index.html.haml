@@ -1,15 +1,29 @@
 .direct__mail
-  .sub_contents
-    = render partial: "side_form"
-  .user__mail
-    .user__mail__info
-      %h3 DM INFOMATION
-      - if user_signed_in?
-        %h5
-          Hello #{current_user.nickname}
-        .user__mail__list
+  .user__all
+    .user__mail
+      .user__mail__info
+        %h3 ユーザー一覧
+        - if user_signed_in?
+          %h5
+            ようこそ #{current_user.nickname} さん
+      .user__mail__list
         - @users.each do |u|
-          %p
-            %a{:href => "/users/#{u.id}"}
-              = u.nickname
-              さん
+          - if current_user.id != u.id
+            .user__mail__list__box
+              .user_image
+                - if u.image?
+                  = image_tag u.image.url, :size => '40x40'
+                - else
+                  .user_image
+                    = image_tag "/assets/default.png", :size => '40x40'
+              .user__name
+                %p
+                  %a{:href => "/users/#{u.id}"}
+                    = u.nickname
+                    さん
+              - if current_user != @user
+                .user__follow
+                  - if u.followed_by?(current_user)
+                    = link_to "フォロー中", user_relationships_path(u.id), method: :delete
+                  - else
+                    = link_to "フォロー", user_relationships_path(u.id), method: :post

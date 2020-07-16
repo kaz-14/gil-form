@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :group_users
   has_many :groups, through: :group_users
   has_many :favorites
-  has_many :favorite_tweets, through: :favorites
+  has_many :favorite_tweets, through: :favorites, source: :tweet
   has_many :likes
   has_many :likes_group_tweets, through: :likes
   has_many :messages, dependent: :destroy
