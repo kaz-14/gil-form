@@ -1,12 +1,33 @@
 .form-content
-  = form.text_field :title, placeholder: "タイトル" 
-  = label :image, class: 'form-image' do
-    = form.file_field :image, placeholder: "画像" 
-  = form.text_area :text, placeholder: "文章" , rows: "10"
-  = form.label :tag_list, 'タグ'
-  = form.text_field :tag_list, placeholder: "タグ" , value: @group_tweet.tag_list.join(','), id: 'tags'
-  %br
-  %select#tweet_status{:name => "group_tweet[status]"}
-    %option{:selected => "selected", :value => "draft"} 下書き
-    %option{:value => "published"} 公開中
-  = form.submit "SEND", class: 'tweet__form__btn'
+  %form.go-right
+    .fc__box
+      %span タイトル
+      .fc__tx
+        = form.text_field :title, class:"fc__tx"
+        %label{:for => "title"} title
+    .fc__box
+      %span タグ
+      .fc__tx
+        = form.text_field :tag_list, value: @group_tweet.tag_list.join(','), id: 'tags', class:"fc__tx"
+        %label{:for => "tag"} tag
+    .fc__box
+      %span 文章
+      .fc__ta
+        = form.text_area :text, rows: "10" , class:"fc__ta"
+        %label{:for => "text"} text  
+    .fc__list
+      %span 投稿状態
+      .cp_ipselect.cp_sl01
+        %select#tweet_status{:name => "group_tweet[status]"}
+          %option{:selected => "selected", :value => "draft"} 下書き
+          %option{:value => "published"} 公開中
+    .fc__list
+      %span 画像
+      .fc__ipfile
+        %label
+          .button Choose File
+          = form.file_field :image, placeholder: "画像", class:"file__input"
+          .file__text ファイルを選んでください
+    .fc__btn
+      .btn__cont
+        = form.submit "SEND", class: 'tweet__form__btn'

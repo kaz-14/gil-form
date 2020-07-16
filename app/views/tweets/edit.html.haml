@@ -1,6 +1,8 @@
 .post-form__new
   .postainer
-    = form_with(model: @tweet, local: true) do |form|
+    .postainer__title
       %h3
-        編集する
-      = render partial: "form", locals: { form: form }
+      編集
+    .postainer__show
+      = form_with(model: @tweet, local: true) do |form|
+        = render partial: "form", locals: { form: form }
