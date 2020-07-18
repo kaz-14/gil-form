@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() { 
   let tabs = $(".menu_item");
 
   function tabSwitch() {
@@ -6,6 +6,7 @@ $(function() {
     $(this).addClass("active");
     const index = tabs.index(this);
     $(".content").removeClass("show").eq(index).addClass("show")
+    return false;
   }
   tabs.click(tabSwitch);
 });

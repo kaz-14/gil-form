@@ -33,7 +33,7 @@ class TweetsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @tweet.comments.includes(:user)
+    @comments = @tweet.comments.includes(:user).order('created_at asc')
     @tweet = Tweet.find_by(id: params[:id])
     if  @tweet.nil?
       redirect_to root_path

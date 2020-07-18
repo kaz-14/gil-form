@@ -1,0 +1,9 @@
+-# .content__favorite
+-#   -if current_user.favorited_by?(tweet.id)
+-#     = link_to destroy_favorite_path(tweet), method: :DELETE, remote: true do
+-#       = icon('fas', 'heart')
+-#     = tweet.favorites.count
+-#   - else
+-#     = link_to create_favorite_path(tweet), method: :POST, remote: true do
+-#       = icon('far', 'heart')
+-#     = tweet.favorites.count

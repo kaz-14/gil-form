@@ -1,7 +1,8 @@
 class Tweet < ApplicationRecord
   validates :text, presence: true
+  validates :title, presence: true
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :favorites
   enum status: { draft: 0, published: 1 }
 

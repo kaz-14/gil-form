@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() { 
   function addUser(user) {
     let html = `
                 <div class="ChatMember">
@@ -28,7 +28,6 @@ $(function() {
                 `;
     $(".ChatMembers").append(html);
   }
-
   $("#UserSearch__field").on("keyup", function() {
     let input = $("#UserSearch__field").val();
     $.ajax({
