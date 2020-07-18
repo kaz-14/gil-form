@@ -14,6 +14,8 @@
     .content__title
       .content__title__text
         = tweet.title
+      -# .favorite
+      -#   = render partial: "favorites/favorite", locals: {tweet: tweet}
     .content__favorite
       - if current_user.favorited_by?(tweet.id)
         = link_to destroy_favorite_path(tweet), method: :DELETE do

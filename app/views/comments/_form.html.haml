@@ -1,0 +1,7 @@
+- if current_user
+  = form_with(model: [@tweet, @comment], remote: true ) do |form| 
+    = form.text_area :text, placeholder: "コメントする", class: "textbox"
+    = form.submit "SEND", class: "form__submit"
+- else
+  %strong
+    %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※

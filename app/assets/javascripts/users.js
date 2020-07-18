@@ -1,4 +1,5 @@
 $(function() {
+  document.addEventListener("turbolinks:load", function() {
   function addUser(user) {
     let html = `
                 <div class="ChatMember">
@@ -62,4 +63,5 @@ $(function() {
   $(".ChatMembers").on("click", ".ChatMember__remove", function() {
     $(this).parent().remove();
   });
+  })
 });
