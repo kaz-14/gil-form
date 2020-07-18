@@ -1,5 +1,4 @@
-$(function() {
-  document.addEventListener("turbolinks:load", function() {
+$(document).on('turbolinks:load', function() { 
   function addUser(user) {
     let html = `
                 <div class="ChatMember">
@@ -29,7 +28,6 @@ $(function() {
                 `;
     $(".ChatMembers").append(html);
   }
-
   $("#UserSearch__field").on("keyup", function() {
     let input = $("#UserSearch__field").val();
     $.ajax({
@@ -63,5 +61,4 @@ $(function() {
   $(".ChatMembers").on("click", ".ChatMember__remove", function() {
     $(this).parent().remove();
   });
-  })
 });
