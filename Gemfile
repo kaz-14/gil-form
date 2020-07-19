@@ -33,6 +33,18 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'pry-rails'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rails-console'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
+
+
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -71,3 +83,5 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'jquery-rails'
 
 gem 'jquery-ui-rails'
+
+gem 'rails-i18n'

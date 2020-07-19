@@ -1,5 +1,6 @@
 class GroupTweet < ApplicationRecord
   validates :text, presence: true
+  validates :title, presence: true
   belongs_to :group
   belongs_to :user
   has_many :likes
