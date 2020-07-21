@@ -1,7 +1,7 @@
 lock '3.14.1'
 
-set :application, 'fleamarket_sample_78_d-'
-set :repo_url,  'git@github.com:shokasuya/fleamarket_sample_78_d-.git'
+set :application, 'gil-form'
+set :repo_url,  'git@github.com:/kaz-14/gil-form.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
@@ -9,7 +9,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.6.5'
 
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/s7chatspace.pem']
+                  keys: ['~/.ssh/chatkzls.pem'] 
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
