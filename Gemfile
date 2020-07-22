@@ -89,3 +89,5 @@ gem 'rails-i18n'
 group :production do
   gem 'unicorn'
 end
+
+gem 'fog-aws'
