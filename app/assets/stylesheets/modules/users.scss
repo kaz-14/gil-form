@@ -212,7 +212,7 @@ ul.post__list li.show {
 .direct__mail{
   z-index:0;
   overflow: hidden;
-  background: url(/assets/DM.jpg) no-repeat center;
+  background-image: image-url("DM.jpg");
   position: relative;
   background-position: center center;
   background-repeat: no-repeat;
@@ -251,7 +251,7 @@ ul.post__list li.show {
 }
 
 .user__mail{
-  background-color: #002055;
+  background-color: #002b6fa5;
   box-shadow: 0 0px 20px rgba(0,0,0,0.2);
   padding-top: 10px;
   &__info{
