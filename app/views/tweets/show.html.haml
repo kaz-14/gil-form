@@ -33,7 +33,7 @@
                 = image_tag u.image.url if u.image.present?
               - else
                 .user__image
-                  = image_tag "/assets/default.png", :size => '40x40'
+                  = image_tag asset_path"default.png", :size => '40x40'
           %a{:href => "/users/#{@tweet.user.id}"}
             = @tweet.user.nickname
         - if current_user != @tweet.user

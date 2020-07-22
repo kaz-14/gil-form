@@ -13,7 +13,7 @@
                     = image_tag u.image.url, :size => '40x40'
                   - else
                     .user_image
-                      = image_tag "/assets/default.png", :size => '40x40'
+                      = image_tag asset_path"default.png", :size => '40x40'
                 .user__name
                   %p
                     %a{:href => "/users/#{u.id}"}

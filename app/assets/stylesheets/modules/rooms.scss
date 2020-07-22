@@ -26,7 +26,7 @@
 
 .room__message{
   height: 100%;
-  background-image: url(/assets/kaiwa.jpg);
+  background-image: image-url("kaiwa.jpg");
   background-color:rgba(255,255,255,0.5);
   background-blend-mode:lighten;
   background-position: center center;

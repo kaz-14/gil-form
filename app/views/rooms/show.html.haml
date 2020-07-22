@@ -13,7 +13,7 @@
                     = image_tag e.user.image.url, :size => '40x40' if e.user.image.present?
                   - else
                     .user_image
-                      = image_tag "/assets/default.png", :size => '40x40'
+                      = image_tag asset_path"default.png", :size => '40x40'
                 .user__name
                   %a{:href => "/users/#{e.user.id}"}
                     = e.user.nickname
@@ -41,7 +41,7 @@
                         = image_tag e.user.image.url, :size => '40x40' if e.user.image.present?
                       - else
                         .user_image
-                          = image_tag "/assets/default.png", :size => '40x40'
+                          = image_tag asset_path"default.png", :size => '40x40'
               .messege_list__left__box
                 .message-list__field__date
                   = m.created_at.strftime("%Y年%m月%d日 %H時%M分")

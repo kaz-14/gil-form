@@ -5,8 +5,8 @@
         = image_tag tweet.image.url, :size => '100x100', class: 'image__box'
   - else
     .content__image
-      = link_to tweet_path(tweet.id) do
-        = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
+      .de-image
+        = image_tag asset_path"tweet-df.jpg", :size => '100x100', class: 'image__box'
   .content__tags
     .content__tags__list
       = render 'shared/tag_list', tag_list: tweet.tag_list
@@ -33,7 +33,7 @@
             = image_tag u.image.url if u.image.present?
           - else
             .user__image
-              = image_tag "/assets/default.png", :size => '40x40'
+              = image_tag asset_path"default.png", :size => '40x40'
       %a{:href => "/users/#{tweet.user.id}"}
         = tweet.user.nickname
     - if current_user != tweet.user

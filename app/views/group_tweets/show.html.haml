@@ -30,7 +30,7 @@
               = image_tag current_user.image.url, :size => '40x40'
           - else
             .user__image
-              = image_tag "/assets/default.png", :size => '40x40'
+              = image_tag asset_path"default.png", :size => '40x40'
           %a{:href => "/users/#{@group_tweet.user.id}"}
             = @group_tweet.user.nickname
         - if current_user != @group_tweet.user
@@ -62,7 +62,7 @@
                       = image_tag u.image.url if u.image.present?
                     - else
                       .user__image
-                        = image_tag "/assets/default.png", :size => '40x40'
+                        = image_tag asset_path"default.png", :size => '40x40'
               = link_to opinion.user.nickname, "/users/#{opinion.user_id}"
               ：
               = opinion.text

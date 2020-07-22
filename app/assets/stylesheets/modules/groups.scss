@@ -150,7 +150,7 @@ $pink: #ee9cb4;
 
 //グループ全体
 .group__content{
-  background-image: url(/assets/team.jpg);
+  background-image: image-url("team.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   // background-attachment: fixed;

@@ -357,6 +357,17 @@
     color: #aaa;
     text-decoration: underline;
   }
+  .de-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
 
 .image__box{
@@ -599,7 +610,7 @@ hr{
 
 //投稿フォーム
 .post-form__group{
-  background-image: url(/assets/desk2.jpg);
+  background-image: image-url("desk2.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   // background-attachment: fixed;

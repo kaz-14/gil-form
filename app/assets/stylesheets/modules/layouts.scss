@@ -17,6 +17,10 @@ body{
     display: block;
     height: 100px;
     position: relative;
+    img{
+      height: 120px;
+      width: 300px;
+    }
   }
   &__side_bar{
     justify-content: center;
@@ -57,11 +61,6 @@ body{
       }
     }
   }
-}
-
-.image__log{
-  height: 120px;
-  width: 300px;
 }
 
 .user_nav{

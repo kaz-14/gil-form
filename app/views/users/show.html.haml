@@ -6,7 +6,7 @@
           - if @user.image?
             = image_tag @user.image.url if @user.image.present?
           - else
-            = image_tag "/assets/default.png"
+            = image_tag asset_path"default.png"
         .detail__content
           .detail__content__name
             .content__user__name

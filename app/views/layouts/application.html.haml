@@ -12,9 +12,9 @@
 .header
   - if user_signed_in?
     .header__logo
-      .ligo_image
+      .logo_image
         = link_to root_path do
-          = image_tag "/assets/GIL-logo-black.png", :size => '50x50', class: 'image__log'
+          = image_tag asset_path"GIL-logo-black.png", :size => '50x50', class: 'image__log'
     .header__side_bar
       = render 'shared/menu_bar'
     .header__bar
@@ -23,7 +23,7 @@
           = image_tag current_user.image.url, :size => '40x40'
       - else
         .header__bar__user_image
-          = image_tag "/assets/default.png", :size => '40x40'
+          = image_tag asset_path"default.png", :size => '40x40'
       .user_nav.grid-6
         %span
           = current_user.nickname

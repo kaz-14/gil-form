@@ -7,7 +7,8 @@
     - else
       .content__image
         = link_to group_group_tweet_path(@group,group__tweet) do
-          = image_tag "/assets/default.png", :size => '100x100', class: 'image__box'
+          .de-image
+            = image_tag asset_path"tweet-df.jpg", :size => '100x100', class: 'image__box'
     .content__tags
       = render 'shared/tag_group_list', tag_list: group__tweet.tag_list , group__tweet: group__tweet
     .content__group__description
@@ -31,7 +32,7 @@
             = image_tag current_user.image.url, :size => '40x40'
         - else
           .user__image
-            = image_tag "/assets/default.png", :size => '40x40'
+            = image_tag asset_path"default.png", :size => '40x40'
         %a{:href => "/users/#{group__tweet.user.id}"}
           = group__tweet.user.nickname
       - if current_user != group__tweet.user
