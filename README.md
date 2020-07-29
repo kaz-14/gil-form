@@ -93,4 +93,4 @@ http://175.41.216.227/
    - 作業状態を分けて表示
 
 # ER図
-![alt](ER-1.png)
+![ER-1](https://user-images.githubusercontent.com/66046956/88760208-88051700-d1a7-11ea-871c-e15fbbb67fd4.png)
