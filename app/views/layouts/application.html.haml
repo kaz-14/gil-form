@@ -41,7 +41,13 @@
         = link_to root_path do
           = image_tag "/assets/GIL-logo-black.png", :size => '50x50', class: 'image__log'
       .log-in__menu
-        = link_to "ログイン", new_user_session_path, class: 'post'
-        = link_to "新規登録", new_user_registration_path, class: 'post'
+        .btn-border-gradient-wrap
+          .btn-border-gradient-wrap--silver
+            .btn-box 
+              = link_to "ログイン", new_user_session_path, class: 'post__log-in'
+        .btn-border-gradient-wrap
+          .btn-border-gradient-wrap--silver
+            .btn-box 
+              = link_to "新規登録", new_user_registration_path, class: 'post__log-in'
     = yield
 

@@ -1,9 +1,10 @@
 .content-sub
   .group__header
     .content__post-btn
-      = link_to  "投稿する", new_tweet_path, class: "post"
-    .group__draft
-      %button.group__draft__list
+      .post-btn__box
+        = link_to  "投稿する", new_tweet_path, class: "post"
+    .draft__list
+      .draft__box
         = link_to "下書き",confirm_tweets_path
     .content-sub__search
       = form_with(url: search_tweets_path, local: true, method: :get, class: "search-form") do |form|

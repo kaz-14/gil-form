@@ -6,9 +6,13 @@
           .more
             %ul.more__list
               %li
-                = link_to '編集', edit_group_group_tweet_path(@group.id,@group_tweet.id), method: :get
+                = link_to edit_group_group_tweet_path(@group.id,@group_tweet.id), method: :get do
+                  %i.fas.fa-cog
+                  ="編集"
               %li
-                = link_to '削除', group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
+                  %i.far.fa-trash-alt
+                  ="削除"
       .content__group__description
         .content__title
           .content__title__text

@@ -15,14 +15,21 @@ $color-primary: #ABA194;
     font-size: $font-size;
     animation: move 10s ease infinite;
     transform: translate3d(0, 0, 0);
-    background: linear-gradient(45deg, #d5f3e7 10%, #A2C7E5 90%);
-    height: 1000px;
+    // background: linear-gradient(45deg, #d5f3e7 10%, #A2C7E5 90%);
+    background-image: image-url("log-in.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:rgba(255,255,255,0.5);
+    background-blend-mode:lighten;
     overflow: scroll;
+    height: 100vh;
 }
 
 .log-in__list {
     width: 90%;
     max-width: 340px;
+    height: 600px;
     margin: 0 auto;
     padding-top: 15px;
 }
@@ -32,6 +39,10 @@ $color-primary: #ABA194;
     opacity: 0;
     transform: translate3d(0, 500px, 0);
     animation: arrive 500ms ease-in-out 0.7s forwards;
+    img{
+      width: 50px;
+      height: 50px;
+    }
 }
 
 .log-in__title {
@@ -172,4 +183,86 @@ $color-primary: #ABA194;
     100% {
         background-position: 0 0
     }
+}
+
+
+.log-in__menu{
+  a {
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+  }
+
+
+  .btn-border-gradient-wrap {
+    display: inline-block;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+  }
+
+  .btn-border-gradient-wrap {
+    background-image: -webkit-linear-gradient(
+      315deg,
+      #333 0%,
+      #868888 20%,
+      #d8dcdc 34%,
+      #999a9c 35%,
+      #cccdce 43%,
+      white 53%,
+      #d1d6d7 68%,
+      #9b9d9f 84%,
+      #666 100%
+    );
+    background-image: linear-gradient(
+      135deg,
+      #333 0%,
+      #868888 20%,
+      #d8dcdc 34%,
+      #999a9c 35%,
+      #cccdce 43%,
+      white 53%,
+      #d1d6d7 68%,
+      #9b9d9f 84%,
+      #666 100%
+    );
+  }
+
+  .btn-box {
+    background: #000;
+  }
+
+  .post__log-in {
+    background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#fff),
+      to(#999)
+    );
+    background: -webkit-linear-gradient(bottom, #fff, #999);
+    background: linear-gradient(to top, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .btn-border-gradient-wrap--silver:hover a{
+    text-shadow: 0 0 15px rgba(209, 214, 215, 0.5),
+      0 0 15px rgba(209, 214, 215, 0.5), 0 0 15px rgba(209, 214, 215, 0.5),
+      0 0 15px rgba(209, 214, 215, 0.5);
+  }
+
 }

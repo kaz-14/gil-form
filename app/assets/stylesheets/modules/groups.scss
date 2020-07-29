@@ -13,7 +13,12 @@ $pink: #ee9cb4;
   height: 100vh;
   overflow: scroll;
   width: 100%;
-  background-color: #ffffff;
+  background-image: image-url("group.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
   transform: translateZ(0);
   &__height{
     height: 1500px;
