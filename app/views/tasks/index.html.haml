@@ -13,14 +13,14 @@
                   = task.title
                 .edit-delete-btn
                   = link_to edit_task_path(task) do
-                    = icon('fas', 'cog')
+                    %i.fas.fa-cog
                     ="編集"
                   = link_to task_path(task), method: :delete do
-                    = icon('fas', 'cog')
+                    %i.far.fa-trash-alt
                     ="削除"
           .task__post__link
             = link_to new_task_path do
-              = icon('fas', 'fa-plus')
+              %i.fas.fa-plus
               = "タスクの追加"
     .task__list__box
       .task__table
@@ -35,10 +35,10 @@
                   = task.title
                 .edit-delete-btn
                   = link_to edit_task_path(task) do
-                    = icon('fas', 'cog')
+                    %i.fas.fa-cog
                     ="編集"
                   = link_to task_path(task), method: :delete do
-                    = icon('fas', 'cog')
+                    %i.far.fa-trash-alt
                     ="削除"
     .task__list__box
       .task__table
@@ -53,8 +53,8 @@
                   = task.title
                 .edit-delete-btn
                   = link_to edit_task_path(task) do
-                    = icon('fas', 'cog')
+                    %i.fas.fa-cog
                     ="編集"
                   = link_to task_path(task), method: :delete do
-                    = icon('fas', 'cog')
+                    %i.far.fa-trash-alt
                     ="削除"

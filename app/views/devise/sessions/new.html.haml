@@ -1,7 +1,7 @@
 .log-in__content
   .log-in__list
     .log-in__list__header
-      %img{:alt => "", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg"}/
+      = image_tag asset_path"icon.png", :size => '20x20', class: 'log__image__icon'
       %h1.log-in__title  ログイン
     .log-in__form
       = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|

@@ -1,9 +1,12 @@
 .log-in__content
-  = link_to "ログアウト", '#', class: 'Button'
-  = link_to "トップページに戻る", :back, class: 'Button'
+  .btn-list
+    .content__btn
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+    .content__btn
+      = link_to "トップページに戻る", root_path
   .log-in__list
     .log-in__list__header
-      %img{:alt => "", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg"}/
+      = image_tag asset_path"icon.png", :size => '20x20', class: 'log__image__icon'
       %h1.log-in__title  アカウントの編集
       .log-in__form
         = form_for(current_user) do |f|

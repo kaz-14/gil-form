@@ -384,3 +384,37 @@ ul.post__list li.show {
     }
   }
 }
+
+//ユーザー編集画面ボタン
+.btn-list{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  display: flex;
+}
+.content__btn {
+  border-radius: 20px;
+  margin-right: 5px;
+  padding: 10px 20px;
+  background-color: #f9f9f939;
+  border-bottom: 5px solid #bcbcbc;
+  text-align: center;
+  a{
+    text-decoration: none;
+    color: #4f6fad;
+    font-weight: bold;
+  }
+}
+.content__btn:hover {
+  margin-top: 3px;
+  background: #f9f9f9e0;
+  border-bottom: 2px solid #bcbcbc;
+  a{
+    text-decoration: none;
+    color: #4f6fad;
+  }
+}
+.content__btn {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}

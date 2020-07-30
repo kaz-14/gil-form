@@ -6,7 +6,9 @@
   - else
     .content__image
       .de-image
-        = image_tag asset_path"tweet-df.jpg", :size => '100x100', class: 'image__box'
+        = link_to tweet_path(tweet.id) do
+          .de-image
+            = image_tag asset_path"tweet-df.jpg", :size => '100x100', class: 'image__box'
   .content__tags
     .content__tags__list
       = render 'shared/tag_list', tag_list: tweet.tag_list
