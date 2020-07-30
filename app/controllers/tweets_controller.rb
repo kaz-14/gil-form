@@ -29,6 +29,7 @@ class TweetsController < ApplicationController
 
   def update
     @tweet.update(tweet_params)
+    redirect_to tweet_path(@tweet.id)
   end
 
   def show

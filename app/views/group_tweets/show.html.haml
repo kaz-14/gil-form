@@ -1,18 +1,35 @@
 .group__outer
   .group__row
     .content__post
-      .content__image{:style => "background-image: url(#{@group_tweet.image});"}
-        - if user_signed_in? && current_user.id == @group_tweet.user_id
-          .more
-            %ul.more__list
-              %li
-                = link_to edit_group_group_tweet_path(@group.id,@group_tweet.id), method: :get do
-                  %i.fas.fa-cog
-                  ="編集"
-              %li
-                = link_to group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
-                  %i.far.fa-trash-alt
-                  ="削除"
+      - if @group_tweet.image?
+        .content__image{:style => "background-image: url(#{@group_tweet.image});"}
+          - if user_signed_in? && current_user.id == @group_tweet.user_id
+            .more
+              %ul.more__list
+                %li
+                  = link_to edit_group_group_tweet_path(@group.id,@group_tweet.id), method: :get do
+                    %i.fas.fa-cog
+                    ="編集"
+                %li
+                  = link_to group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
+                    %i.far.fa-trash-alt
+                    ="削除"
+      - else
+        .content__df__image
+          - if user_signed_in? && current_user.id == @group_tweet.user_id
+            .more
+              %ul.more__list
+                %li
+                  = link_to edit_group_group_tweet_path(@group.id,@group_tweet.id), method: :get do
+                    %i.fas.fa-cog
+                    ="編集"
+                %li
+                  = link_to group_group_tweet_path(@group_tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
+                    %i.far.fa-trash-alt
+                    ="削除"
+      .content__tags
+        .content__tags__list
+          = render 'shared/tag_list', tag_list: @group_tweet.tag_list
       .content__group__description
         .content__title
           .content__title__text

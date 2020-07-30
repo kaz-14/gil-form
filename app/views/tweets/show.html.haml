@@ -1,18 +1,32 @@
 .content
   .contents.row
     .content__post
-      .content__image{:style => "background-image: url(#{@tweet.image});"}
-        - if user_signed_in? && current_user.id == @tweet.user_id
-          .more
-            %ul.more__list
-              %li
-                = link_to edit_tweet_path(@tweet.id), method: :get do
-                  %i.fas.fa-cog
-                  ="編集"
-              %li
-                = link_to tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
-                  %i.far.fa-trash-alt
-                  ="削除"
+      - if @tweet.image?
+        .content__image{:style => "background-image: url(#{@tweet.image});"}
+          - if user_signed_in? && current_user.id == @tweet.user_id
+            .more
+              %ul.more__list
+                %li
+                  = link_to edit_tweet_path(@tweet.id), method: :get do
+                    %i.fas.fa-cog
+                    ="編集"
+                %li
+                  = link_to tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
+                    %i.far.fa-trash-alt
+                    ="削除"
+      - else
+        .content__df__image
+          - if user_signed_in? && current_user.id == @tweet.user_id
+            .more
+              %ul.more__list
+                %li
+                  = link_to edit_tweet_path(@tweet.id), method: :get do
+                    %i.fas.fa-cog
+                    ="編集"
+                %li
+                  = link_to tweet_path(@tweet.id), method: :delete, data: { confirm: 'Are you sure?' } do
+                    %i.far.fa-trash-alt
+                    ="削除"
       .content__tags
         .content__tags__list
           = render 'shared/tag_list', tag_list: @tweet.tag_list
