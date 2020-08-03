@@ -18,46 +18,5 @@
                   %a{:href => "/users/#{e.user.id}"}
                     = e.user.nickname
                     さん
-    .messege_list
-      - if @messages.present?
-        - @messages.each do |m|
-          - if current_user.id == m.user.id
-            .messege_list__right
-              .messege_list__right__box
-                .message-list__field__date
-                  = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                .messege_list__right__box__content
-                  - if m.content.present?
-                    %strong= m.content
-                  = image_tag m.image.url, class: 'message-box__image' if m.image.present?
-            .bms_clear
-          - else
-            .messege_list__left
-              .messege_list__left__icon
-                - @entries.each do |e|
-                  - if current_user.id != e.user.id
-                    .user_image
-                      - if e.user.image?
-                        = image_tag e.user.image.url, :size => '40x40' if e.user.image.present?
-                      - else
-                        .user_image
-                          = image_tag asset_path"default.png", :size => '40x40'
-              .messege_list__left__box
-                .message-list__field__date
-                  = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                .messege_list__left__box__content
-                  - if m.content.present?
-                    %strong= m.content
-                  = image_tag m.image.url, class: 'message-box__image' if m.image.present?
-            .bms_clear
-      - else
-        %h3.text-center メッセージはまだありません
-      = form_for @message do |f|
-        .message__list__content
-          .message__form
-            = f.text_field :content, :placeholder => "メッセージを入力して下さい" , class: 'message__form__text', :size => 70
-            = f.hidden_field :room_id, :value => @room.id
-            = f.label :image, class: 'message__form__image' do
-              = icon('far', 'image')
-              = f.file_field :image, class: 'message__form__file'
-          = f.submit "投稿する", class: 'message__form__btn'
+    .messege__box
+      = render "messages/index"

@@ -1,0 +1,9 @@
+= form_with(model: @message, remote: true ) do |f| 
+  .message__list__content
+    .message__form
+      = f.text_field :content, :placeholder => "メッセージを入力して下さい" , class: 'message__form__text', :size => 70
+      = f.hidden_field :room_id, :value => @room.id
+      = f.label :image, class: 'message__form__image' do
+        = icon('far', 'image')
+        = f.file_field :image, class: 'message__form__file'
+    = f.submit "投稿する", class: 'message__form__btn'
