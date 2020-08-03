@@ -1,0 +1,16 @@
+.comments
+  %h4 ＜コメント一覧＞
+  - if @opinions
+    - @opinions.each do |opinion|
+      .comments__box
+        .user__image
+          - @users.each do |u|
+            - if opinion.user.id == u.id
+              - if u.image?
+                = image_tag u.image.url if u.image.present?
+              - else
+                .user__image
+                  = image_tag asset_path"default.png", :size => '40x40'
+        = link_to opinion.user.nickname, "/users/#{opinion.user_id}"
+        ：
+        = opinion.text
